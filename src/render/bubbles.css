@@ -1,0 +1,51 @@
+body {
+  overflow: hidden;
+}
+
+.bubbles-container {
+  position: relative;
+  font-family: fantasy, monospace, sans-serif;
+}
+
+.group {
+  transition: all 0.5s ease-in-out;
+}
+
+.tag-bubble {
+  position: absolute;
+  background-color: aliceblue;
+  transition: all 0.5s ease-in-out;
+  transform-origin: center;
+  transform: scale(1);
+}
+
+.tag-bubble .tag-bubble {
+  transform: scale(0);
+}
+
+.tag-bubble.child {
+  transform: scale(0);
+}
+
+.zoomed .group:not(.selected) > .tag-bubble:not(.child) {
+  transform: scale(1);
+  opacity: 0.5;
+}
+
+.zoomed .group.selected > .tag-bubble {
+  transform: scale(0);
+}
+
+.zoomed .group.selected > .tag-bubble.child {
+  transform: scale(1);
+}
+
+.tag-bubble .title {
+  text-align: center;
+  height: 97%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}

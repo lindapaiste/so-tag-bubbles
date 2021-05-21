@@ -1,0 +1,807 @@
+{
+  "items": [
+    {
+      "user_id": 10431574,
+      "answer_count": 692,
+      "answer_score": 655,
+      "question_count": 1,
+      "question_score": 1,
+      "tag_name": "typescript"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 639,
+      "answer_score": 519,
+      "question_count": 2,
+      "question_score": 7,
+      "tag_name": "reactjs"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 330,
+      "answer_score": 257,
+      "question_count": 1,
+      "question_score": 2,
+      "tag_name": "javascript"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 244,
+      "answer_score": 214,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "redux"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 150,
+      "answer_score": 134,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-redux"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 67,
+      "answer_score": 89,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "redux-toolkit"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 84,
+      "answer_score": 89,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "typescript-generics"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 61,
+      "answer_score": 70,
+      "question_count": 1,
+      "question_score": 1,
+      "tag_name": "typescript-typings"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 88,
+      "answer_score": 70,
+      "question_count": 1,
+      "question_score": 5,
+      "tag_name": "react-native"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 49,
+      "answer_score": 41,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-router"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 62,
+      "answer_score": 39,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-hooks"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 31,
+      "answer_score": 33,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "types"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 31,
+      "answer_score": 31,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "redux-thunk"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 27,
+      "answer_score": 26,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "generics"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 27,
+      "answer_score": 22,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "node.js"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 18,
+      "answer_score": 17,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "angular"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 29,
+      "answer_score": 16,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-router-dom"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 16,
+      "answer_score": 16,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "arrays"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 19,
+      "answer_score": 15,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "oop"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 18,
+      "answer_score": 14,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "state"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 24,
+      "answer_score": 14,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "redux-saga"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 14,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "destructuring"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 17,
+      "answer_score": 12,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-typescript"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 12,
+      "answer_score": 12,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "mongoose"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 12,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "firebase"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 16,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "design-patterns"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 14,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "class"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 10,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "jsx"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 18,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "styled-components"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 16,
+      "answer_score": 9,
+      "question_count": 1,
+      "question_score": 2,
+      "tag_name": "material-ui"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 9,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "casting"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 11,
+      "answer_score": 9,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "use-reducer"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 8,
+      "answer_score": 9,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "reselect"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 8,
+      "answer_score": 9,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "next.js"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 14,
+      "answer_score": 9,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "html"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 10,
+      "answer_score": 8,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-select"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 5,
+      "answer_score": 8,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "string"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 8,
+      "answer_score": 8,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "use-effect"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 5,
+      "answer_score": 8,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "es6-promise"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 11,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "interface"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 17,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "axios"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "type-inference"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "object"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 14,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-navigation"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 12,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "use-state"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 12,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "mongodb"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 10,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "context-api"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "typeguards"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "google-cloud-firestore"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 11,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-props"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "expo"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 11,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "inheritance"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 11,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "css"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 7,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "api"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 8,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "immer.js"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 9,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "components"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 9,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "higher-order-components"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "redux-persist"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "visual-studio-code"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "setstate"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 5,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "enums"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "template-literals"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "type-conversion"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "mongoose-schema"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "p5.js"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "state-management"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "string-literals"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "higher-order-functions"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-forwardref"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "formik"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "undefined"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "typechecking"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "redux-store"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "ml5"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "eslint"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "gatsby"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 7,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "reducers"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "function"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-redux-firebase"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 7,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "antd"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "refactoring"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 5,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "typescript-types"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 6,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "mapped-types"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 4,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-state"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 5,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "dictionary"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "static"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "es6-modules"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "tsx"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "nested"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "pattern-matching"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 2,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "parameters"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "bcrypt"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "return-type"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "next-redux-wrapper"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "getserversideprops"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "circular-dependency"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "functional-programming"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-bootstrap-typeahead"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-component"
+    },
+    {
+      "user_id": 10431574,
+      "answer_count": 3,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "react-testing-library"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 10000,
+  "quota_remaining": 9994
+}
