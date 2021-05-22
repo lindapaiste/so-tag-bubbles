@@ -16,6 +16,7 @@ export const App = (): JSX.Element => {
         height: window.innerHeight,
       });
     }
+
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -33,15 +34,21 @@ export const App = (): JSX.Element => {
   });
 
   return (
-      <div className="bubbles-container">
-        <div className="top-left">
-          <h1>Linda Paiste</h1>
-        </div>
-    <BubbleCloud width={size.width} height={size.height} root={root} />
-
-        <div className="bottom-right">
-          <h2>Top <a href="https://stackoverflow.com/users/10431574/linda-paiste">StackOverflow</a> Answer Tags</h2>
-        </div>
+    <div className="bubbles-container">
+      <div className="top-left">
+        <h1>Linda Paiste</h1>
       </div>
-    );
+      <BubbleCloud width={size.width} height={size.height} root={root} />
+
+      <div className="bottom-right">
+        <h2>
+          Top{" "}
+          <a href="https://stackoverflow.com/users/10431574/linda-paiste">
+            StackOverflow
+          </a>{" "}
+          Answer Tags
+        </h2>
+      </div>
+    </div>
+  );
 };

@@ -33,6 +33,7 @@ export const ParentBubble = ({
       {!!children &&
         children.map((node, i) => (
           <Bubble
+            key={node.data.tag_name}
             className="tag-bubble child"
             onMouseEnter={select}
             node={node}
