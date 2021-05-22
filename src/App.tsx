@@ -1,27 +1,47 @@
-import React, { useState } from "react";
-import Bubbles from "./render/Bubbles";
+import React, { useEffect, useState } from "react";
+import { useTopTags } from "./data/useTopTags";
+import { usePackLayout } from "./data/usePackLayout";
+import { BubbleCloud } from "./render/BubbleCloud";
 
-/**
- * link to answers in tag: https://stackoverflow.com/search?q=user:10431574+[react-redux]
- */
-/**
- * TODO: receive data from a server with caching.
- *
- * Right now preload with stored data from a .json file
- * and overwrite with fresh data from API response.
- *
- * TBH there is not much volatility in my top tags,
- * so the .json file is pretty good.
- */
-const App = () => {
+export const App = (): JSX.Element => {
   const [size, setSize] = useState({
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
   });
 
-  const [data, setData] = useState();
+  useEffect(() => {
+    function handleResize() {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener("resize", handleResize);
 
-  // "https://api.stackexchange.com/2.2/users/10431574/top-answer-tags?site=stackoverflow";
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const tags = useTopTags();
+
+  const root = usePackLayout({
+    ...size,
+    tags,
+    /**
+     * The number of tags to show. Can adjust this amount.
+     */
+    count: 40,
+  });
+
+  return (
+      <div className="bubbles-container">
+        <div className="top-left">
+          <h1>Linda Paiste</h1>
+        </div>
+    <BubbleCloud width={size.width} height={size.height} root={root} />
+
+        <div className="bottom-right">
+          <h2>Top <a href="https://stackoverflow.com/users/10431574/linda-paiste">StackOverflow</a> Answer Tags</h2>
+        </div>
+      </div>
+    );
 };
-
-export default Bubbles;
