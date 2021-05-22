@@ -1,3 +1,6 @@
+/* can load all weights: wght@300;400;700; */
+@import url("https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap");
+
 body {
   overflow: hidden;
 }
@@ -9,8 +12,9 @@ a {
 
 .bubbles-container {
   position: relative;
-  font-family: fantasy, monospace, sans-serif;
+  font-family: "BenchNine", sans-serif;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .top-left {
@@ -68,7 +72,6 @@ a.underlined:hover {
 
 .zoomed .group:not(.selected) > .tag-bubble:not(.child) {
   transform: scale(1);
-  opacity: 0.5;
 }
 
 .zoomed .group.selected > .tag-bubble {
@@ -81,7 +84,7 @@ a.underlined:hover {
 
 .tag-bubble .title {
   text-align: center;
-  height: 97%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
