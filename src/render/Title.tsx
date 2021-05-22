@@ -30,6 +30,7 @@ export const Title = ({ radius, text = "" }: TitleProps): JSX.Element => {
       }}
       href={`https://stackoverflow.com/search?q=user:10431574+[${text}]`}
       target="_blank"
+      rel="noopener noreferrer"
     >
       {words.map((word) => (
         <span key={word}>{word}</span>
