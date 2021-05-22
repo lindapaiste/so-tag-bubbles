@@ -43,7 +43,8 @@ export const App = (): JSX.Element => {
       <div className="bottom-right">
         <h2>
           Top{" "}
-          <a href="https://stackoverflow.com/users/10431574/linda-paiste">
+          <a className="underlined"
+             href="https://stackoverflow.com/users/10431574/linda-paiste">
             StackOverflow
           </a>{" "}
           Answer Tags

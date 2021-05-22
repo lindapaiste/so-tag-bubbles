@@ -12,9 +12,6 @@ const USER_ID = 10431574;
  *
  * TBH there is not much volatility in my top tags,
  * so the .json file is pretty good.
- *
- *
- * link to answers in tag: https://stackoverflow.com/search?q=user:10431574+[react-redux]
  */
 export const useTopTags = (): UserTag[] => {
   const [data, setData] = useState<TopTagsJson>(saved);
