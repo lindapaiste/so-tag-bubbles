@@ -22,19 +22,16 @@ export const Title = ({ radius, text = "" }: TitleProps): JSX.Element => {
     )
   );
   return (
-    <a
+    <div
       className="title"
       style={{
         fontSize: `${fontSize}px`,
         lineHeight: `${fontSize}px`,
       }}
-      href={`https://stackoverflow.com/search?q=user:10431574+[${text}]`}
-      target="_blank"
-      rel="noopener noreferrer"
     >
       {words.map((word) => (
         <span key={word}>{word}</span>
       ))}
-    </a>
+    </div>
   );
 };
