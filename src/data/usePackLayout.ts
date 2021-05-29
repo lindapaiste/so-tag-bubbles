@@ -61,7 +61,7 @@ export const usePackLayout = ({
    * Layout depends on the size.
    */
   const packLayout = useMemo(
-    () => d3.pack<UserTag>().size([width, height]).padding(10),
+    () => d3.pack<UserTag>().size([width, height]).padding(3),
     [width, height]
   );
 
