@@ -1,8 +1,7 @@
 import * as d3 from "d3";
 import { HierarchyCircularNode, PackCircle } from "d3";
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, FC } from "react";
 import { UserTag } from "../data/types";
-import { Title } from "./Title";
 
 /**
  * Create the interpolator to map from values 0-2.
@@ -27,29 +26,29 @@ const circleStyle = (circle: PackCircle): CSSProperties => ({
 
 /**
  * Basic bubble which can be used for the parent or the child.
- * Creates the size, color, position, and title.
+ * Creates the size, color, and position.
+ * Titles should be passed as children.
  */
-export interface BubbleProps {
+export type BubbleProps = {
   node: HierarchyCircularNode<UserTag>;
-  onClick?: () => void;
-  className?: string;
   colorValue: number;
-}
+} & JSX.IntrinsicElements["div"];
 
-export const Bubble = ({
+export const Bubble: FC<BubbleProps> = ({
   node,
-  onClick,
-  className,
   colorValue,
-}: BubbleProps): JSX.Element => (
-  <div
-    className={className}
-    onClick={onClick}
-    style={{
-      ...circleStyle(node),
-      background: colorInterpolator(colorValue),
-    }}
-  >
-    <Title text={node.data.tag_name} radius={node.r} />
-  </div>
-);
+  children,
+  ...props
+}) => {
+  return (
+    <div
+      {...props}
+      style={{
+        ...circleStyle(node),
+        background: colorInterpolator(colorValue),
+      }}
+    >
+      {children}
+    </div>
+  );
+};

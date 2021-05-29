@@ -152,15 +152,15 @@
   "typescript2.0": "typescript",
   "input": "web",
   "react-color": "react",
-  "fluent-ui": "",
+  "fluent-ui": "ui",
   "event-handling": "javascript",
-  "file-upload": "",
+  "file-upload": "web",
   "authentication": "",
   "dispatch": "redux",
   "conditional-types": "typescript",
   "typescript-class": "oop",
   "normalizr": "redux",
-  "tailwind-css": "",
+  "tailwind-css": "ui",
   "jwt": "web",
   "immutable.js": "structures",
   "strategy-pattern": "oop",
@@ -170,5 +170,8 @@
   "react-router-v4": "routing",
   "recursion": "structures",
   "infinite-scroll": "javascript",
-  "typesafe-actions": "redux"
+  "typesafe-actions": "redux",
+  "django": "backend",
+  "django-rest-framework": "backend",
+  "chakra-ui": "ui"
 }

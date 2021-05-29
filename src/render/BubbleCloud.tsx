@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ParentBubble } from "./ParentBubble";
 import { UserTag } from "../data/types";
 import "./bubbles.css";
+import { ZoomContext } from "./ZoomContext";
 
 export interface BubbleCloudProps {
   width: number;
@@ -20,29 +21,31 @@ export const BubbleCloud = ({
 
   const groups = root.children;
 
-  const transformToNode = (node: HierarchyCircularNode<UserTag>): string => {
-    const scale = (0.8 * Math.min(width, height)) / (2 * node.r);
-    const translateX = 0.5 * width - node.x;
-    const translateY = 0.5 * height - node.y;
-    return `scale(${Math.min(
-      scale,
-      5
-    )}) translate(${translateX}px, ${translateY}px)`;
-  };
-  const transform = selected !== null ? transformToNode(selected) : undefined;
+  const zoomScale = selected
+    ? Math.min(
+        (0.8 * Math.min(width, height)) / (2 * selected.r), // 80% of canvas
+        5 // maximum of 5x
+      )
+    : 1;
+
+  const transform = selected
+    ? `scale(${zoomScale}) translate(${0.5 * width - selected.x}px, ${
+        0.5 * height - selected.y
+      }px)`
+    : undefined;
 
   return (
-    <>
+    <ZoomContext.Provider value={zoomScale}>
       <div
         className={`bubbles-container ${selected === null ? "" : "zoomed"}`}
         style={{ width, height, transform }}
+        onClick={() => setSelected(null)}
       >
-        <div className="backdrop" onClick={() => setSelected(null)} />
         {!!groups &&
           groups.map((node, i) => (
             <ParentBubble
               key={`group-${node.data.tag_name}`}
-              parent={node}
+              node={node}
               select={() => setSelected(node)}
               deselect={() => setSelected(null)}
               isSelected={selected?.data.tag_name === node.data.tag_name}
@@ -50,6 +53,6 @@ export const BubbleCloud = ({
             />
           ))}
       </div>
-    </>
+    </ZoomContext.Provider>
   );
 };

@@ -1,40 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HierarchyCircularNode } from "d3";
 import { Bubble } from "./Bubble";
 import { UserTag } from "../data/types";
+import { Title } from "./Title";
+import { ChildBubble } from "./ChildBubble";
 
 interface ParentBubbleProps {
-  parent: HierarchyCircularNode<UserTag>;
+  node: HierarchyCircularNode<UserTag>;
   isSelected: boolean;
-  select?: () => void;
-  deselect?: () => void;
+  select: () => void;
+  deselect: () => void;
   colorBasis: number;
 }
 
 export const ParentBubble = ({
-  parent,
+  node,
   isSelected,
   select,
   deselect,
   colorBasis,
 }: ParentBubbleProps): JSX.Element => {
-  const { children } = parent;
-  const onClick = isSelected ? deselect : select;
+  const { children } = node;
+
+  const [activeTagName, setActiveTagName] = useState<string | null>(null);
+  // Clear active tag when the group is no longer selected.
+  useEffect(() => {
+    if (!isSelected) setActiveTagName(null);
+  }, [isSelected]);
+
   return (
     <div className={`group ${isSelected ? "selected" : ""}`}>
       <Bubble
         className="tag-bubble parent"
-        onClick={onClick}
-        node={parent}
+        onClick={(e) => {
+          e.stopPropagation(); // override background click
+          isSelected ? deselect() : select();
+        }}
+        node={node}
         colorValue={colorBasis}
-      />
+      >
+        <Title node={node} isActive={false} />
+      </Bubble>
       {!!children &&
-        children.map((node, i) => (
-          <Bubble
-            key={node.data.tag_name}
-            className="tag-bubble child"
-            onClick={onClick}
-            node={node}
+        children.map((childNode, i) => (
+          <ChildBubble
+            key={childNode.data.tag_name}
+            isActive={childNode.data.tag_name === activeTagName}
+            setActiveTagName={setActiveTagName}
+            node={childNode}
             colorValue={colorBasis + (children.length - i) / children.length}
           />
         ))}

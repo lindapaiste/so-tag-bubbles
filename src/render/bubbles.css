@@ -30,12 +30,6 @@ a {
   right: 0;
 }
 
-.backdrop {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
 h1 {
   font-weight: normal;
   font-size: 6vw;
@@ -127,4 +121,22 @@ a.underlined:hover {
 
 .tag-bubble.parent:hover > .title {
   opacity: 1;
+}
+
+.details .label {
+  font-size: 50%;
+}
+
+.details {
+  transition: all 500ms ease-in-out;
+}
+
+.details.hidden {
+  max-height: 0;
+  transform: scaleY(0);
+}
+
+.details.visible {
+  max-height: 1000px;
+  transform: scaleY(1);
 }
