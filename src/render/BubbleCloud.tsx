@@ -15,24 +15,37 @@ export const BubbleCloud = ({
   height,
   root,
 }: BubbleCloudProps): JSX.Element => {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] =
+    useState<HierarchyCircularNode<UserTag> | null>(null);
 
   const groups = root.children;
+
+  const transformToNode = (node: HierarchyCircularNode<UserTag>): string => {
+    const scale = (0.8 * Math.min(width, height)) / (2 * node.r);
+    const translateX = 0.5 * width - node.x;
+    const translateY = 0.5 * height - node.y;
+    return `scale(${Math.min(
+      scale,
+      5
+    )}) translate(${translateX}px, ${translateY}px)`;
+  };
+  const transform = selected !== null ? transformToNode(selected) : undefined;
 
   return (
     <>
       <div
         className={`bubbles-container ${selected === null ? "" : "zoomed"}`}
-        style={{ width, height }}
+        style={{ width, height, transform }}
       >
+        <div className="backdrop" onClick={() => setSelected(null)} />
         {!!groups &&
           groups.map((node, i) => (
             <ParentBubble
               key={`group-${node.data.tag_name}`}
               parent={node}
-              select={() => setSelected(node.data.tag_name)}
+              select={() => setSelected(node)}
               deselect={() => setSelected(null)}
-              isSelected={selected === node.data.tag_name}
+              isSelected={selected?.data.tag_name === node.data.tag_name}
               colorBasis={(groups.length - i) / groups.length}
             />
           ))}

@@ -15,7 +15,7 @@ export const Title = ({ radius, text = "" }: TitleProps): JSX.Element => {
   // enforce minimum of 10 px
   // combined height cannot be more than some % of radius
   const fontSize = Math.max(
-    14, // min size
+    //14, // min size
     Math.min(
       (4.1 * radius) / maxWordLen, // base size
       (1.5 * radius) / words.length // max size by height

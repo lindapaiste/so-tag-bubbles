@@ -19,14 +19,12 @@ export const ParentBubble = ({
   colorBasis,
 }: ParentBubbleProps): JSX.Element => {
   const { children } = parent;
+  const onClick = isSelected ? deselect : select;
   return (
-    <div
-      className={`group ${isSelected ? "selected" : ""}`}
-      onMouseLeave={deselect}
-    >
+    <div className={`group ${isSelected ? "selected" : ""}`}>
       <Bubble
-        className="tag-bubble"
-        onMouseEnter={select}
+        className="tag-bubble parent"
+        onClick={onClick}
         node={parent}
         colorValue={colorBasis}
       />
@@ -35,7 +33,7 @@ export const ParentBubble = ({
           <Bubble
             key={node.data.tag_name}
             className="tag-bubble child"
-            onMouseEnter={select}
+            onClick={onClick}
             node={node}
             colorValue={colorBasis + (children.length - i) / children.length}
           />

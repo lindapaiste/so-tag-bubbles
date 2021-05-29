@@ -31,20 +31,20 @@ const circleStyle = (circle: PackCircle): CSSProperties => ({
  */
 export interface BubbleProps {
   node: HierarchyCircularNode<UserTag>;
-  onMouseEnter?: () => void;
+  onClick?: () => void;
   className?: string;
   colorValue: number;
 }
 
 export const Bubble = ({
   node,
-  onMouseEnter,
+  onClick,
   className,
   colorValue,
 }: BubbleProps): JSX.Element => (
   <div
     className={className}
-    onMouseEnter={onMouseEnter}
+    onClick={onClick}
     style={{
       ...circleStyle(node),
       background: colorInterpolator(colorValue),

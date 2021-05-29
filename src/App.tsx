@@ -30,7 +30,7 @@ export const App = (): JSX.Element => {
     /**
      * The number of tags to show. Can adjust this amount.
      */
-    count: 40,
+    count: 200,
   });
 
   return (
