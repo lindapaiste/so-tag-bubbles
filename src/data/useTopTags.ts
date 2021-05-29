@@ -7,14 +7,14 @@ const USER_ID = 10431574;
 /**
  * TODO: receive data from a server with caching.
  *
- * Right now preload with stored data from a .json file
- * and overwrite with fresh data from API response.
+ * Right now attempt to load fresh data from API response,
+ * and backfill with stored data from a .json file only on error.
  *
  * TBH there is not much volatility in my top tags,
  * so the .json file is pretty good.
  */
 export const useTopTags = (): UserTag[] => {
-  const [data, setData] = useState<TopTagsJson>(saved);
+  const [data, setData] = useState<TopTagsJson>();
 
   useEffect(() => {
     let isSubscribed = true;
@@ -34,7 +34,7 @@ export const useTopTags = (): UserTag[] => {
           setData(json.data);
         }
       } catch (e) {
-        // ignore errors
+        setData(saved);
       }
     })();
 
@@ -43,5 +43,5 @@ export const useTopTags = (): UserTag[] => {
     };
   }, []);
 
-  return data.items;
+  return data?.items ?? [];
 };

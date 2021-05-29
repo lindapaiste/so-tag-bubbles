@@ -10,6 +10,7 @@ a {
   text-decoration: none;
 }
 
+.app-container,
 .bubbles-container {
   position: relative;
   font-family: "BenchNine", sans-serif;
@@ -140,3 +141,16 @@ a.underlined:hover {
   max-height: 1000px;
   transform: scaleY(1);
 }
+
+/* ---------- LOAD IN EFFECT ----------- */
+
+.loaded-enter .tag-bubble.parent {
+  transform: scale(0);
+}
+
+.loaded-enter-active .tag-bubble.parent {
+  transform: scale(1);
+  transition: all 500ms;
+}
+
+/* note: overflowing and snapping back doesn't work because the transition on the snap back will override other durations */

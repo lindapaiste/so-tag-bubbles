@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTopTags } from "./data/useTopTags";
 import { usePackLayout } from "./data/usePackLayout";
 import { BubbleCloud } from "./render/BubbleCloud";
+import { CSSTransition } from "react-transition-group";
 
 export const App = (): JSX.Element => {
   const [size, setSize] = useState({
@@ -34,12 +35,18 @@ export const App = (): JSX.Element => {
   });
 
   return (
-    <div className="bubbles-container">
+    <div className="app-container">
       <div className="top-left">
         <h1>Linda Paiste</h1>
       </div>
-      <BubbleCloud width={size.width} height={size.height} root={root} />
-
+      <CSSTransition
+        in={tags.length > 0}
+        appear={tags.length > 0}
+        timeout={500}
+        classNames="loaded"
+      >
+        <BubbleCloud width={size.width} height={size.height} root={root} />
+      </CSSTransition>
       <div className="bottom-right">
         <h2>
           Top{" "}
