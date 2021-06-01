@@ -9,7 +9,7 @@
       "dom",
       "es2019"
     ],
-    "jsx": "react",
+    "jsx": "preserve",
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "target": "es5",
@@ -19,6 +19,10 @@
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "isolatedModules": true,
-    "noEmit": true
-  }
+    "noEmit": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

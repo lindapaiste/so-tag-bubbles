@@ -1,10 +1,11 @@
 import React from "react";
+import clsx from "clsx";
 import { useClampFontSize } from "./ZoomContext";
-import { HierarchyCircularNode } from "d3";
-import { UserTag } from "../data/types";
+import { TagNode } from "../../services/d3/usePackLayout";
+import styles from "./bubbles.module.css";
 
 export interface TitleProps {
-  node: HierarchyCircularNode<UserTag>;
+  node: TagNode;
   isActive: boolean;
 }
 
@@ -21,6 +22,7 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
   const maxWordLen = Math.max(...words.map((w) => w.length));
   // size is primarily based on width of longest word
   // combined height cannot be more than some % of radius
+  // TODO: base this on approximate diagonal of the text as radius
   const titleSize = useClampFontSize(
     Math.min(
       (4.1 * radius) / maxWordLen, // base size
@@ -36,32 +38,33 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
   );
   return (
     <div
-      className="title"
+      className={styles.title}
       style={{
         fontSize: `${titleSize}px`,
         lineHeight: `${titleSize}px`,
       }}
     >
       {words.map((word) => (
-        <span className="word" key={word}>
-          {word}
-        </span>
+        <span key={word}>{word}</span>
       ))}
       {isLeaf && (
         <div
-          className={`details ${isActive ? "visible" : "hidden"}`}
+          className={clsx(
+            styles.details,
+            isActive ? styles.visible : styles.hidden
+          )}
           style={{
             fontSize: `${detailSize}px`,
             lineHeight: `${detailSize}px`,
           }}
         >
-          <div className="score">
-            <span className="number">{data.answer_score}</span>{" "}
-            <span className="label">Score</span>
+          <div>
+            <span>{data.answer_score}</span>{" "}
+            <span className={styles.label}>Score</span>
           </div>
-          <div className="answers">
-            <span className="number">{data.answer_count}</span>{" "}
-            <span className="label">Answers</span>
+          <div>
+            <span>{data.answer_count}</span>{" "}
+            <span className={styles.label}>Answers</span>
           </div>
         </div>
       )}

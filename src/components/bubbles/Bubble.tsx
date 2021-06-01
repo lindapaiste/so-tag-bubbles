@@ -1,11 +1,10 @@
 import * as d3 from "d3";
-import { HierarchyCircularNode, PackCircle } from "d3";
+import { PackCircle } from "d3";
 import React, { CSSProperties, FC } from "react";
-import { UserTag } from "../data/types";
 
 /**
  * Create the interpolator to map from values 0-2.
- * Where 0-1 are the parents and 2 is the largest child.
+ * Where 0-1 are the parents and 2 is the smallest child.
  */
 const colorInterpolator = d3
   .scaleSequential<string, number>()
@@ -30,7 +29,7 @@ const circleStyle = (circle: PackCircle): CSSProperties => ({
  * Titles should be passed as children.
  */
 export type BubbleProps = {
-  node: HierarchyCircularNode<UserTag>;
+  node: PackCircle;
   colorValue: number;
 } & JSX.IntrinsicElements["div"];
 

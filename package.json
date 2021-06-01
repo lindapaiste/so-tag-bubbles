@@ -7,15 +7,22 @@
     "data-visualization",
     "stackoverflow"
   ],
-  "main": "src/index.tsx",
   "dependencies": {
     "axios": "^0.21.0",
+    "clsx": "^1.1.1",
     "d3": "^6.5.0",
+    "next": "^10.2.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/node-logger": "^6.2.9",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.2.9",
     "@types/d3": "^6.3.0",
     "@types/d3-hierarchy": "^2.0.0",
     "@types/d3-scale": "^3.2.3",
@@ -27,22 +34,31 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "prettier": "^2.3.0",
-    "react-scripts": "^3.4.4",
-    "typescript": "^3.7.5"
+    "typescript": "^4.3.2",
+    "typescript-plugin-css-modules": "^3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build",
+    "test": "next test --env=jsdom",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "prettier": "prettier --write src/**/*"
+    "prettier": "prettier --write src/**/*",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  }
 }

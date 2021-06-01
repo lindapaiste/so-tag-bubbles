@@ -1,16 +1,20 @@
 import React, { FC } from "react";
 import { Title } from "./Title";
 import { Bubble, BubbleProps } from "./Bubble";
+import { TagNode } from "../../services/d3/usePackLayout";
+import styles from "./bubbles.module.css";
+import clsx from "clsx";
 
-/**
- * Basic bubble which can be used for the parent or the child.
- * Creates the size, color, position, and title.
- */
 export type ChildBubbleProps = BubbleProps & {
+  node: TagNode;
   isActive: boolean;
-  setActiveTagName: React.Dispatch<React.SetStateAction<string | null>>;
+  setActiveTagName?: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
+/**
+ * Renders the child bubble along with its title texts.
+ * Handles activation and deactivation.
+ */
 export const ChildBubble: FC<ChildBubbleProps> = ({
   node,
   isActive,
@@ -23,14 +27,14 @@ export const ChildBubble: FC<ChildBubbleProps> = ({
     <Bubble
       {...bubbleProps}
       node={node}
-      className={"tag-bubble child"}
+      className={clsx(styles.tagBubble, styles.child)}
       // prevent parent bubble clicks -- must click outside the circle
       onClick={(e) => e.stopPropagation()}
       // activate on hover
-      onMouseEnter={() => setActiveTagName(tag)}
+      onMouseEnter={() => setActiveTagName?.(tag)}
       // deactivate on end hover, only if it's still active
       onMouseLeave={() =>
-        setActiveTagName((current) => (current === tag ? null : current))
+        setActiveTagName?.((current) => (current === tag ? null : current))
       }
     >
       <Title node={node} isActive={isActive} />

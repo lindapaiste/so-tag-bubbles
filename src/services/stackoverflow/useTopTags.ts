@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import saved from "./my-top-answer-tags.json";
 import { TopTagsJson, UserTag } from "./types";
+import { USER_ID } from "../../config";
 
-const USER_ID = 10431574;
 /**
  * TODO: receive data from a server with caching.
  *

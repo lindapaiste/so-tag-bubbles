@@ -11,11 +11,16 @@ export interface UserTag {
 }
 
 /**
- * the full response
+ * all API responses follow a standard format
  */
-export interface TopTagsJson {
-  items: UserTag[];
+export interface SoResponse<T> {
+  items: T[];
   has_more: boolean;
   quota_max: number;
   quota_remaining: number;
 }
+
+/**
+ * the full response
+ */
+export type TopTagsJson = SoResponse<UserTag>;

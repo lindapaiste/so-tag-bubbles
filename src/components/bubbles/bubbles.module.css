@@ -1,46 +1,46 @@
 /* can load all weights: wght@300;400;700; */
 @import url("https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap");
 
-body {
-  overflow: hidden;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-.app-container,
-.bubbles-container {
+.container {
   position: relative;
   font-family: "BenchNine", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  transition: all 500ms ease-in-out;
 }
 
-.top-left {
+.container,
+.cloud {
+  transition: all 500ms ease-in-out;
+  overflow: hidden;
+}
+
+.topLeft {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.bottom-right {
+.bottomRight {
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
-h1 {
+.container h1 {
   font-weight: normal;
   font-size: 6vw;
   margin: 0;
   border-bottom: 6px solid #50d7cb;
 }
 
-h2 {
+.container h2 {
   font-weight: normal;
   font-size: 2.15vw;
+}
+
+.container a {
+  color: black;
+  text-decoration: none;
 }
 
 a.underlined {
@@ -56,7 +56,7 @@ a.underlined:hover {
   transition: all 0.5s ease-in-out;
 }
 
-.tag-bubble {
+.tagBubble {
   position: absolute;
   transition: all 0.5s ease-in-out;
   transform-origin: center;
@@ -64,11 +64,11 @@ a.underlined:hover {
   opacity: 1;
 }
 
-.tag-bubble.parent:hover {
+.tagBubble.parent:hover {
   opacity: 0.8;
 }
 
-.tag-bubble .title {
+.title {
   text-align: center;
   height: 100%;
   display: flex;
@@ -78,49 +78,41 @@ a.underlined:hover {
   transition: all 500ms ease-in-out;
 }
 
-.tag-bubble .tag-bubble {
+.tagBubble.child,
+.tagBubble.child > .title {
   transform: scale(0);
-}
-
-.tag-bubble.child,
-.tag-bubble.child > .title {
-  transform: scale(0);
-}
-
-.zoomed .group:not(.selected) > .tag-bubble.parent {
-  transform: scale(1);
 }
 
 /* ---------- ENTERING SELECTION ---------- */
 
-.zoomed .group.selected > .tag-bubble.parent {
+.group.selected > .tagBubble.parent {
   opacity: 0.3;
   transition: opacity 700ms ease-in-out;
 }
 
-.zoomed .group.selected > .tag-bubble.parent > .title {
+.group.selected > .tagBubble.parent > .title {
   opacity: 0;
   transform: scale(0);
 }
 
-.zoomed .group.selected > .tag-bubble.child {
+.group.selected > .tagBubble.child {
   transform: scale(1);
   transition: all 700ms ease-in-out;
 }
 
-.zoomed .group.selected > .tag-bubble.child > .title {
+.group.selected > .tagBubble.child > .title {
   transform: scale(1);
   transition: all 500ms ease-in-out 200ms;
 }
 
 /* ---------- HOVER EFFECT ---------- */
 
-.group:not(.selected) .tag-bubble.parent:hover {
+.group:not(.selected) .tagBubble.parent:hover {
   opacity: 0.8;
   transform: scale(0.95);
 }
 
-.tag-bubble.parent:hover > .title {
+.tagBubble.parent:hover > .title {
   opacity: 1;
 }
 
@@ -144,11 +136,11 @@ a.underlined:hover {
 
 /* ---------- LOAD IN EFFECT ----------- */
 
-.loaded-enter .tag-bubble.parent {
+.loaded-enter .tagBubble.parent {
   transform: scale(0);
 }
 
-.loaded-enter-active .tag-bubble.parent {
+.loaded-enter-active .tagBubble.parent {
   transform: scale(1);
   transition: all 500ms;
 }
