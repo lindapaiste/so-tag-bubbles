@@ -135,12 +135,15 @@ a.underlined:hover {
 }
 
 /* ---------- LOAD IN EFFECT ----------- */
+.loadedEnter,
+.loadedEnterActive {
+}
 
-.loaded-enter .tagBubble.parent {
+.loadedEnter .tagBubble.parent {
   transform: scale(0);
 }
 
-.loaded-enter-active .tagBubble.parent {
+.loadedEnterActive .tagBubble.parent {
   transform: scale(1);
   transition: all 500ms;
 }

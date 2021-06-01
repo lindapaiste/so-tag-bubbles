@@ -34,7 +34,10 @@ export const BubblesScreen = ({
         in={tags.length > 0}
         appear={tags.length > 0}
         timeout={500}
-        classNames="loaded"
+        classNames={{
+          enter: styles.loadedEnter,
+          enterActive: styles.loadedEnterActive
+        }}
       >
         <BubbleCloud width={width} height={height} root={root} />
       </CSSTransition>
