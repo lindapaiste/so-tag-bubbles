@@ -18,7 +18,14 @@ export const TAG_COUNT = 100;
  * This is a setting that can be adjusted.
  */
 export const BUBBLE_MINIMUM_FONT_SIZE = 10;
-
+/**
+ * The approximate width of each character in a bubble title
+ * as a fraction of its height. The height will be known but the width
+ * must be approximated. Could use canvas measure to get the exact width,
+ * but that level of accuracy is not required.
+ * Actual number varies from around .37 to .42 depending on character.
+ */
+export const CHARACTER_WIDTH_RATIO = 0.43;
 /**
  * Title to be appended to SEO title tags
  */
