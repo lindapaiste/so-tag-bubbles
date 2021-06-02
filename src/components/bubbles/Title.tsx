@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { useClampFontSize } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
 import styles from "./bubbles.module.css";
+import { CHARACTER_WIDTH_RATIO } from "../../config";
 
 export interface TitleProps {
   node: TagNode;
@@ -11,7 +12,8 @@ export interface TitleProps {
 
 /**
  * Approximates the length of text based on the number of characters.
- * Could use canvas measure to get the exact width, but that level of accuracy is not required.
+ * Figure out the radius of the text rectangle based on the number of
+ * lines and letters per line.  Then can scale that to fit the circle.
  */
 export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
   const { r: radius, data } = node;
@@ -20,15 +22,12 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
 
   const words = text.split("-");
   const maxWordLen = Math.max(...words.map((w) => w.length));
-  // size is primarily based on width of longest word
-  // combined height cannot be more than some % of radius
-  // TODO: base this on approximate diagonal of the text as radius
-  const titleSize = useClampFontSize(
-    Math.min(
-      (4.1 * radius) / maxWordLen, // base size
-      (1.5 * radius) / words.length // max size by height
-    )
-  );
+  const x = CHARACTER_WIDTH_RATIO * maxWordLen;
+  const y = words.length;
+  const textR = Math.sqrt(x * x + y * y);
+
+  const titleSize = useClampFontSize((2 * radius) / textR);
+
   // TODO: better solutions for multi-line and short names
   const detailSize = useClampFontSize(
     Math.min(
@@ -36,6 +35,7 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
       0.4 * radius
     )
   );
+
   return (
     <div
       className={styles.title}
