@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { Title } from "./Title";
 import { Bubble, BubbleProps } from "./Bubble";
 import { TagNode } from "../../services/d3/usePackLayout";
-import styles from "./bubbles.module.css";
 import clsx from "clsx";
+const styles = require("./bubbles.module.css");
 
 export type ChildBubbleProps = BubbleProps & {
   node: TagNode;

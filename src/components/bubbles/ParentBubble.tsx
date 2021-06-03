@@ -3,8 +3,8 @@ import { Bubble } from "./Bubble";
 import { Title } from "./Title";
 import { ChildBubble } from "./ChildBubble";
 import { TagNode } from "../../services/d3/usePackLayout";
-import styles from "./bubbles.module.css";
 import clsx from "clsx";
+const styles = require("./bubbles.module.css");
 
 interface ParentBubbleProps {
   node: TagNode;

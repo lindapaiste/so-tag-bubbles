@@ -7,7 +7,7 @@ import {
 import { BubbleCloud } from "./BubbleCloud";
 import { CSSTransition } from "react-transition-group";
 import { Size } from "../../services/window/useWindowSize";
-import styles from "./bubbles.module.css";
+const styles = require("./bubbles.module.css");
 
 export interface BubblesScreenProps extends Size {
   tags: TagData[];

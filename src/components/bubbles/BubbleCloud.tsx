@@ -3,7 +3,7 @@ import { ParentBubble } from "./ParentBubble";
 import { ZoomContext } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
 import { Size } from "../../services/window/useWindowSize";
-import styles from "./bubbles.module.css";
+const styles = require("./bubbles.module.css");
 
 export interface BubbleCloudProps extends Size {
   nodes: TagNode[];

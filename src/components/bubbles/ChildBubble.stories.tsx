@@ -1,22 +1,20 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import "../components/bubbles/bubbles.css";
 import { ChildBubble } from "./ChildBubble";
 import { ZoomContext } from "./ZoomContext";
 import json from "../../services/stackoverflow/my-top-answer-tags.json";
 import { usePackLayout } from "../../services/d3/usePackLayout";
 
 const BubbleDecorator = (Story: Story) => {
-  const root = usePackLayout({
+  const groups = usePackLayout({
     width: 1000,
     height: 1000,
-    count: 10,
     tags: json.items,
   });
 
   return (
     <ZoomContext.Provider value={1}>
-      <Story node={root.children?.[0]?.children?.[0]} />
+      <Story node={groups[0]?.children?.[0]} />
     </ZoomContext.Provider>
   );
 };

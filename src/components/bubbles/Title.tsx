@@ -2,8 +2,8 @@ import React from "react";
 import clsx from "clsx";
 import { useClampFontSize } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
-import styles from "./bubbles.module.css";
 import { CHARACTER_WIDTH_RATIO } from "../../config";
+const styles = require("./bubbles.module.css");
 
 export interface TitleProps {
   node: TagNode;
