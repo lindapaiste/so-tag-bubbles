@@ -20,7 +20,7 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
   const { tag_name: text = "" } = data;
   const isLeaf = node.children === undefined;
 
-  const words = text.split("-");
+  const words = text.toString().split("-");
   const maxWordLen = Math.max(...words.map((w) => w.length));
   const x = CHARACTER_WIDTH_RATIO * maxWordLen;
   const y = words.length;

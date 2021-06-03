@@ -8,13 +8,19 @@
     "stackoverflow"
   ],
   "dependencies": {
+    "@vercel/node": "^1.11.0",
     "axios": "^0.21.0",
     "clsx": "^1.1.1",
     "d3": "^6.5.0",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.9",
     "next": "^10.2.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-transition-group": "^4.4.2"
+    "react-transition-group": "^4.4.2",
+    "swr": "^0.5.6",
+    "url": "^0.11.0",
+    "whatwg-url": "^8.5.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.2.9",
@@ -26,9 +32,13 @@
     "@types/d3": "^6.3.0",
     "@types/d3-hierarchy": "^2.0.0",
     "@types/d3-scale": "^3.2.3",
+    "@types/lodash": "^4.14.170",
+    "@types/mongodb": "^3.6.17",
+    "@types/node": "^15.6.1",
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.0",
     "@types/react-transition-group": "^4.4.1",
+    "@types/whatwg-url": "^8.2.0",
     "@typescript-eslint/eslint-plugin": "4.0.1",
     "@typescript-eslint/parser": "4.0.1",
     "eslint-config-prettier": "^8.3.0",

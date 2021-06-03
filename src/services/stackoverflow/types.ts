@@ -16,8 +16,12 @@ export interface UserTag {
 export interface SoResponse<T> {
   items: T[];
   has_more: boolean;
-  quota_max: number;
-  quota_remaining: number;
+  /**
+   * These are always present, but I am marking them as optional because
+   * they are not needed.
+   */
+  quota_max?: number;
+  quota_remaining?: number;
 }
 
 /**

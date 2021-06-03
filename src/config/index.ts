@@ -8,16 +8,24 @@ export const USER_ID = 10431574;
 export const PACK_LAYOUT_PADDING = 3;
 /**
  * The number of tags to show in the tag cloud. Can adjust this amount.
- * Note: >100 will not have any impact currently because only the
- * first page is fetched.
  */
-export const TAG_COUNT = 100;
+export const TAG_COUNT = 150;
 /**
  * The minimum font size for tag bubble texts,
  * after accounting for zoom scale.
  * This is a setting that can be adjusted.
  */
 export const BUBBLE_MINIMUM_FONT_SIZE = 10;
+/**
+ * Do not include parent bubbles if their score is less than this amount.
+ */
+export const MINIMUM_GROUP_SCORE = 5;
+/**
+ * Limit the number of children in a parent group to prevent unnecessary
+ * tiny bubbles where better large bubbles exist.
+ * Want to keep low-count tags in small bubbles which don't have many entries.
+ */
+export const MAX_CHILDREN_PER_BUBBLE = 10;
 /**
  * The approximate width of each character in a bubble title
  * as a fraction of its height. The height will be known but the width

@@ -1,3 +1,4 @@
 body {
   overflow: hidden;
+  margin: 0; /* overrides user agent */
 }

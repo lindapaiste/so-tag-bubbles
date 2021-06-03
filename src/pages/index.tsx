@@ -1,16 +1,21 @@
 import { useWindowSize } from "../services/window/useWindowSize";
-import { useTopTags } from "../services/stackoverflow/useTopTags";
 import React from "react";
 import { BubblesScreen } from "../components/bubbles/BubblesScreen";
 import SEO from "../services/seo/SEO";
+import { GetStaticProps } from "next";
+import { getMyTopTags } from "../services/stackoverflow/client";
+import { TagData } from "../services/d3/usePackLayout";
+import { TAG_COUNT } from "../config";
 
-export default function Bubbles(): JSX.Element {
+interface Props {
+  initialData: TagData[];
+}
+
+export default function Bubbles({ initialData }: Props): JSX.Element {
   const { width, height } = useWindowSize({
     width: 500,
     height: 500,
   });
-
-  const tags = useTopTags();
 
   return (
     <>
@@ -18,7 +23,16 @@ export default function Bubbles(): JSX.Element {
         title={"Linda Paiste - Front End Web Developer - Houston, TX"}
         appendSiteName={false}
       />
-      <BubblesScreen tags={tags} width={width} height={height} />
+      <BubblesScreen tags={initialData} width={width} height={height} />
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  return {
+    props: {
+      initialData: (await getMyTopTags(TAG_COUNT)).items,
+    },
+    revalidate: 3600, // 1 hour
+  };
+};

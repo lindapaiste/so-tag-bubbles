@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { ParentBubble } from "./ParentBubble";
 import { ZoomContext } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
@@ -6,24 +6,18 @@ import { Size } from "../../services/window/useWindowSize";
 import styles from "./bubbles.module.css";
 
 export interface BubbleCloudProps extends Size {
-  root: TagNode;
+  nodes: TagNode[];
+  selected: TagNode | null;
+  onSelect: Dispatch<SetStateAction<TagNode | null>>;
 }
 
 export const BubbleCloud = ({
   width,
   height,
-  root,
+  nodes,
+  selected,
+  onSelect,
 }: BubbleCloudProps): JSX.Element => {
-  /**
-   * Store the currently selected parent node, or null if none.
-   */
-  const [selected, setSelected] = useState<TagNode | null>(null);
-
-  /**
-   * The parent bubbles are the children of the root node.
-   */
-  const groups = root.children ?? [];
-
   /**
    * Zoom in on the selected node based on its size.
    * Intend for it to fill 80% of the width or height,
@@ -56,16 +50,16 @@ export const BubbleCloud = ({
       <div
         className={styles.cloud}
         style={{ width, height, transform }}
-        onClick={() => setSelected(null)}
+        onClick={() => onSelect(null)}
       >
-        {groups.map((node, i) => (
+        {nodes.map((node, i) => (
           <ParentBubble
             key={`group-${node.data.tag_name}`}
             node={node}
-            select={() => setSelected(node)}
-            deselect={() => setSelected(null)}
+            select={() => onSelect(node)}
+            deselect={() => onSelect(null)}
             isSelected={selected?.data.tag_name === node.data.tag_name}
-            colorBasis={(groups.length - i) / groups.length}
+            colorBasis={(nodes.length - i) / nodes.length}
           />
         ))}
       </div>
