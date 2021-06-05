@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react";
+import clsx from "clsx";
 import { ParentBubble } from "./ParentBubble";
 import { ZoomContext } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
 import { Size } from "../../services/window/useWindowSize";
-const styles = require("./bubbles.module.scss");
 
 export interface BubbleCloudProps extends Size {
   nodes: TagNode[];
@@ -48,8 +48,11 @@ export const BubbleCloud = ({
   return (
     <ZoomContext.Provider value={zoomScale}>
       <div
-        className={styles.cloud}
-        style={{ width, height, transform }}
+        className={clsx(
+          "transition-transform duration-500",
+          "w-screen h-screen"
+        )}
+        style={{ transform }}
         onClick={() => onSelect(null)}
       >
         {nodes.map((node, i) => (

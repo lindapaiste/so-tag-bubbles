@@ -8,6 +8,7 @@ const styles = require("./bubbles.module.scss");
 export interface TitleProps {
   node: TagNode;
   isActive: boolean;
+  className?: string;
 }
 
 /**
@@ -15,7 +16,11 @@ export interface TitleProps {
  * Figure out the radius of the text rectangle based on the number of
  * lines and letters per line.  Then can scale that to fit the circle.
  */
-export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
+export const Title = ({
+  node,
+  isActive,
+  className,
+}: TitleProps): JSX.Element => {
   const { r: radius, data } = node;
   const { tag_name: text = "" } = data;
   const isLeaf = node.children === undefined;
@@ -38,7 +43,13 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
 
   return (
     <div
-      className={styles.title}
+      className={clsx(
+        "h-full",
+        "flex flex-col items-center justify-center",
+        "transition-all duration-500",
+        "text-center leading-none",
+        className
+      )}
       style={{
         fontSize: `${titleSize}px`,
       }}
@@ -48,9 +59,12 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
       ))}
       {isLeaf && (
         <div
+          // Note: use an arbitrarily high max height for proper transition
           className={clsx(
-            styles.details,
-            isActive ? styles.visible : styles.hidden
+            "transition-all duration-500",
+            isActive
+              ? "transform scale-y-100 max-h-40"
+              : "transform scale-y-0 max-h-0"
           )}
           style={{
             fontSize: `${detailSize}px`,

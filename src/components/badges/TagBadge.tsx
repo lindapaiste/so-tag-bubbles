@@ -1,9 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import { IoTrophySharp } from "react-icons/io5";
-const styles = require("./badges.module.css");
 import { BadgeRank } from "../../services/stackoverflow/types-badges";
-
+const styles = require("./badges.module.css");
 /**
  * Dictionary allows easy lookup of the color set for each rank.
  * Colors are copy & pasted from StackOverflow's CSS, as of right now.
@@ -41,14 +40,18 @@ export const BadgeMedal = ({
   const { main, lighter, darker } = colors[rank];
   return (
     <div
-      className={clsx(styles.medal, rank)}
+      className={clsx(
+        "box-content border-solid border-2",
+        "w-16 h-16 rounded-full",
+        "relative"
+      )}
       style={{ borderColor: darker, background: lighter }}
     >
       <span
-        className={styles.circle}
-        style={{ background: main, border: `2px solid ${darker}` }}
+        className="rounded-full w-full h-full p-2 opacity-50 absolute"
+        style={{ background: main, border: `4px solid ${darker}` }}
       />
-      <IoTrophySharp className={styles.trophy} color={main} size={40} />
+      <IoTrophySharp className="w-10 h-10 m-3 absolute" color={main} />
     </div>
   );
 };
@@ -66,15 +69,19 @@ export const TagBadgeBox = ({
   const { lighter, darker } = colors[rank];
   return (
     <div
-      className={clsx(styles.tagBadgeBox, rank)}
+      className={clsx(
+        styles.loraFont,
+        "flex flex-row justify-between items-center",
+        "border-solid border rounded-md p-3"
+      )}
       style={{ borderColor: darker, background: lighter }}
     >
-      <div className={styles.badgeTexts}>
-        <span className={styles.rarity}>
-          1 of <span className={styles.count}>{award_count}</span> users with
-          badge
+      <div className="flex-1 flex flex-col text-center items-stretch">
+        <span className="text-xs">
+          1 of <span className="italic font-bold text-base">{award_count}</span>{" "}
+          users with badge
         </span>
-        <span className={styles.tagName}>{tag_name}</span>
+        <span className="italic text-2xl">{tag_name}</span>
       </div>
       <BadgeMedal rank={rank} />
     </div>
