@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { useClampFontSize } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
 import { CHARACTER_WIDTH_RATIO } from "../../config";
-const styles = require("./bubbles.module.css");
+const styles = require("./bubbles.module.scss");
 
 export interface TitleProps {
   node: TagNode;
@@ -41,7 +41,6 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
       className={styles.title}
       style={{
         fontSize: `${titleSize}px`,
-        lineHeight: `${titleSize}px`,
       }}
     >
       {words.map((word) => (
@@ -55,7 +54,6 @@ export const Title = ({ node, isActive }: TitleProps): JSX.Element => {
           )}
           style={{
             fontSize: `${detailSize}px`,
-            lineHeight: `${detailSize}px`,
           }}
         >
           <div>

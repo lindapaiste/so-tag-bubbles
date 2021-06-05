@@ -4,7 +4,7 @@ import { Title } from "./Title";
 import { ChildBubble } from "./ChildBubble";
 import { TagNode } from "../../services/d3/usePackLayout";
 import clsx from "clsx";
-const styles = require("./bubbles.module.css");
+const styles = require("./bubbles.module.scss");
 
 interface ParentBubbleProps {
   node: TagNode;
@@ -40,7 +40,7 @@ export const ParentBubble = ({
   return (
     <div className={clsx(styles.group, isSelected ? styles.selected : "")}>
       <Bubble
-        className={clsx(styles.tagBubble, styles.parent)}
+        className={styles.parentBubble}
         onClick={(e) => {
           e.stopPropagation(); // override background click
           isSelected ? deselect() : select();

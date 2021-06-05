@@ -1,0 +1,205 @@
+/* can load all weights: wght@300;400;700; */
+@import url("https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap");
+
+.container {
+  position: relative;
+  font-family: "BenchNine", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.cloud {
+  transition: transform 500ms ease-in-out;
+}
+
+.group {
+  transition: all 500s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 500ms ease-in-out;
+  line-height: 1;
+}
+
+%bubble {
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  transform-origin: center;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.childBubble,
+.parentBubble {
+  @extend %bubble;
+}
+
+.childBubble,
+.childBubble > .title {
+  transform: scale(0);
+}
+
+/* ---------- LOAD IN EFFECT ----------- */
+
+.loading .parentBubble {
+  transform: scale(0);
+}
+
+.loadingActive .parentBubble {
+  transform: scale(1);
+  transition: all 500ms;
+}
+
+/* note: overflowing and snapping back doesn't work because the transition on the snap back will override other durations */
+
+/* --------- HEADERS ---------- */
+
+.topLeft,
+.bottomRight {
+  transition: all 500ms ease-in-out;
+  position: absolute;
+}
+
+.topLeft {
+  top: 0;
+  left: 0;
+  padding: 0 1.5vw;
+}
+
+.bottomRight {
+  bottom: 0;
+  right: 0;
+  padding: 2vw;
+}
+
+.container h1,
+.container h2 {
+  transition: all 500ms ease-in-out;
+  font-weight: normal;
+  margin: 0;
+}
+
+.container h1 {
+  font-size: 6vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.container h1:after {
+  content: "";
+  width: 100%;
+  border-bottom: 6px solid #50d7cb;
+  transition: all 0.5s ease-in-out;
+}
+
+.container h2 {
+  font-size: 2.15vw;
+}
+
+.container a {
+  color: black;
+  text-decoration: none;
+}
+
+a.underlined {
+  border-bottom: 3px solid #50d7cb;
+  transition: all 0.5s ease-in-out;
+}
+
+a.underlined:hover {
+  background: #50d7cb;
+}
+
+/* --------- HEADER SLIDE EFFECT ---------- */
+
+.zoomEnter .topLeft,
+.zoomEnterDone .topLeft,
+.zoomEnter .topLeft h1:after,
+.zoomEnterDone .topLeft h1:after,
+.loading .topLeft,
+.loading .topLeft h1:after {
+  transform: translateX(-100%);
+}
+
+.zoomEnter .bottomRight,
+.zoomEnterDone .bottomRight,
+.loading .bottomRight {
+  transform: translateX(100%);
+}
+
+.loadingActive .topLeft,
+.loadingActive .bottomRight {
+  transform: translateX(0);
+  transition: all 500ms ease-in-out 200ms;
+}
+
+.loadingActive .topLeft h1:after {
+  transform: translateX(0);
+  transition: all 500ms ease-in-out 500ms;
+}
+
+/* ---------- ENTERING SELECTION ---------- */
+
+.group.selected > .parentBubble {
+  opacity: 0.3;
+  transition: opacity 700ms ease-in-out;
+}
+
+.group.selected > .parentBubble > .title {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.group.selected > .childBubble {
+  transform: scale(1);
+  transition: all 700ms ease-in-out;
+}
+
+.group.selected > .childBubble > .title {
+  transform: scale(1);
+  transition: all 500ms ease-in-out 200ms;
+}
+
+/* ---------- HOVER EFFECT ---------- */
+
+.group:not(.selected) .parentBubble:hover {
+  opacity: 0.8;
+  transform: scale(0.95);
+}
+
+.parentBubble:hover > .title {
+  opacity: 1;
+}
+
+/* TODO: this doesn't work -- find better solution */
+.childBubble:hover > .title {
+  z-index: 1000;
+}
+
+.details .label {
+  font-size: 50%;
+}
+
+.details {
+  transition: all 500ms ease-in-out;
+}
+
+.details.hidden {
+  max-height: 0;
+  transform: scaleY(0);
+}
+
+.details.visible {
+  max-height: 1000px;
+  transform: scaleY(1);
+}

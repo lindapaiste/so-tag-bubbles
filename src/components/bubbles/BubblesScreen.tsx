@@ -7,7 +7,8 @@ import {
 import { BubbleCloud } from "./BubbleCloud";
 import { CSSTransition } from "react-transition-group";
 import { Size } from "../../services/window/useWindowSize";
-const styles = require("./bubbles.module.css");
+import { ClientOnly } from "../../services/window/ClientOnly";
+const styles = require("./bubbles.module.scss");
 
 export interface BubblesScreenProps extends Size {
   tags: TagData[];
@@ -42,11 +43,11 @@ export const BubblesScreen = ({
     <CSSTransition
       appear
       in
-      timeout={500}
+      timeout={1000}
       classNames={{
-        appear: "appear",
-        appearActive: "appearActive",
-        appearDone: "appearDone",
+        appear: styles.loading,
+        appearActive: styles.loadingActive,
+        appearDone: styles.loadingDone,
       }}
     >
       <CSSTransition
@@ -65,15 +66,7 @@ export const BubblesScreen = ({
           <div className={styles.topLeft}>
             <h1>Linda Paiste</h1>
           </div>
-          <CSSTransition
-            in={tags.length > 0}
-            appear={tags.length > 0}
-            timeout={500}
-            classNames={{
-              enter: styles.loadedEnter,
-              enterActive: styles.loadedEnterActive,
-            }}
-          >
+          <ClientOnly>
             <BubbleCloud
               width={width}
               height={height}
@@ -81,7 +74,7 @@ export const BubblesScreen = ({
               selected={selected}
               onSelect={setSelected}
             />
-          </CSSTransition>
+          </ClientOnly>
           <div className={styles.bottomRight}>
             <h2>
               Top{" "}

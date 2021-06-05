@@ -2,8 +2,7 @@ import React, { FC } from "react";
 import { Title } from "./Title";
 import { Bubble, BubbleProps } from "./Bubble";
 import { TagNode } from "../../services/d3/usePackLayout";
-import clsx from "clsx";
-const styles = require("./bubbles.module.css");
+const styles = require("./bubbles.module.scss");
 
 export type ChildBubbleProps = BubbleProps & {
   node: TagNode;
@@ -27,7 +26,7 @@ export const ChildBubble: FC<ChildBubbleProps> = ({
     <Bubble
       {...bubbleProps}
       node={node}
-      className={clsx(styles.tagBubble, styles.child)}
+      className={styles.childBubble}
       // prevent parent bubble clicks -- must click outside the circle
       onClick={(e) => e.stopPropagation()}
       // activate on hover
