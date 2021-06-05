@@ -29,7 +29,7 @@ const colors = {
 export interface TagBadgeProps {
   rank: BadgeRank;
   tag_name: string;
-  award_count?: number;
+  award_count: number;
 }
 
 /**
@@ -62,7 +62,7 @@ export const TagBadgeBox = ({
   rank,
   tag_name,
   award_count,
-}: Required<TagBadgeProps>): JSX.Element => {
+}: TagBadgeProps): JSX.Element => {
   const { lighter, darker } = colors[rank];
   return (
     <div

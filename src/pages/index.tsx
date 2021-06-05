@@ -12,10 +12,7 @@ interface Props {
 }
 
 export default function Bubbles({ initialData }: Props): JSX.Element {
-  const { width, height } = useWindowSize({
-    width: 500,
-    height: 500,
-  });
+  const { width, height } = useWindowSize({ width: 500, height: 500 });
 
   return (
     <>

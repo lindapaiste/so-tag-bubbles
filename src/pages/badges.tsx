@@ -3,7 +3,7 @@ import { SoResponse } from "../services/stackoverflow/types";
 import { getMyBadgesWithCount } from "../services/stackoverflow/client";
 import useSWR from "swr";
 import { TagBadgeBox } from "../components/badges/TagBadge";
-import { sortBy } from "lodash";
+import { sortBy, uniqBy } from "lodash";
 import { GetStaticProps } from "next";
 const styles = require("../components/badges/badges.module.css");
 
@@ -23,9 +23,19 @@ export default function TagBadges({ initialData }: Props): JSX.Element {
   });
 
   // sort by rarity
-  const badges = sortBy(data?.items || [], (b) => b.award_count);
+  // remove lower-level duplicates, ie. if I have silver and bronze, just show bronze.
+  const badges =
+    uniqBy(
+    sortBy(data?.items || [], (b) => b.award_count),
+      (b) => b.name
+    );
+
+
+
 
   return (
+    <div>
+      <h3>Compared to my peers, I excel at:</h3>
     <div className={styles.container}>
       {badges.map((badge) => (
         <TagBadgeBox
@@ -35,6 +45,7 @@ export default function TagBadges({ initialData }: Props): JSX.Element {
           key={badge.badge_id}
         />
       ))}
+    </div>
     </div>
   );
 }
