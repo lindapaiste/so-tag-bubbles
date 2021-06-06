@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    fontFamily: {
+      'lora': ['Lora', 'serif'],
+      'benchnine': ['BenchNine', 'sans-serif']
+    }
   },
   variants: {
     extend: {},

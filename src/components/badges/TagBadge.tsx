@@ -2,7 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import { IoTrophySharp } from "react-icons/io5";
 import { BadgeRank } from "../../services/stackoverflow/types-badges";
-const styles = require("./badges.module.css");
 /**
  * Dictionary allows easy lookup of the color set for each rank.
  * Colors are copy & pasted from StackOverflow's CSS, as of right now.
@@ -70,7 +69,7 @@ export const TagBadgeBox = ({
   return (
     <div
       className={clsx(
-        styles.loraFont,
+        "font-lora",
         "flex flex-row justify-between items-center",
         "border-solid border rounded-md p-3"
       )}

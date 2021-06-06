@@ -1,8 +1,4 @@
-/* can load all weights: wght@300;400;700; */
-@import url("https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap");
-
 #container {
-  font-family: "BenchNine", sans-serif;
 }
 
 /* Tailwind doesn't have any percentage-based or vw-based font sizes */
@@ -12,11 +8,11 @@
 }
 
 #container h1 {
-  font-size: 6vw;
+  font-size: 6vmax;
 }
 
 #container h2 {
-  font-size: 2.15vw;
+  font-size: 2.15vmax;
 }
 
 a.underlined {

@@ -5,7 +5,7 @@ import { SoResponse } from "../services/stackoverflow/types";
 import { getMyBadgesWithCount } from "../services/stackoverflow/client";
 import { TagBadgeBox } from "../components/badges/TagBadge";
 import clsx from "clsx";
-const styles = require("../components/badges/badges.module.css");
+const styles = require("../config/styles.module.css");
 
 // TODO: head
 

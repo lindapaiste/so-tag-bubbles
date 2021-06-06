@@ -64,7 +64,7 @@ export const BubblesScreen = ({
         }}
       >
         <div
-          className="w-screen h-screen overflow-hidden relative flex font-bold uppercase"
+          className="w-screen h-screen overflow-hidden relative flex font-bold font-benchnine uppercase"
           id={styles.container}
         >
           <div
