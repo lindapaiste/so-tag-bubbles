@@ -33,7 +33,7 @@ export interface TagNode extends PackCircle {
  * Drop non-serializable properties from the nodes before returning.
  * Allows for data to be inspected in dev tools.
  */
-const toSerializable = (
+export const toSerializable = (
   node: HierarchyCircularNode<TagData>
 ): TagNode & { value?: number } => {
   const { data, x, y, r, value, children } = node;
