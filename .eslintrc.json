@@ -25,6 +25,7 @@
     "react/react-in-jsx-scope": "off", // conficts with Next.js
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-var-requires": "off", // would like to re-implement if I can figure out CSS issue
     "no-undef": "off",
     "no-plusplus": "off",
     "prettier/prettier": "warn"

@@ -16,15 +16,16 @@ export interface Size {
  * window is not available during server-side rendering.
  */
 export const useWindowSize = (initialSize: Size): Size => {
+  /**
+   * Note: Cannot use the window size as the initial state because this breaks
+   * the rehydration process. The DOM at first client render must match the
+   * server-generated DOM.
+   * See: https://www.joshwcomeau.com/react/the-perils-of-rehydration/
+   */
   const [size, setSize] = useState(initialSize);
+  const [didMount, setDidMount] = useState(false);
 
   useEffect(() => {
-    // need this to set size on first render
-    setSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-
     function handleResize(this: Window) {
       setSize({
         width: this.innerWidth,
@@ -36,6 +37,18 @@ export const useWindowSize = (initialSize: Size): Size => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (didMount) {
+      // need this to set size on first render
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    } else {
+      setDidMount(true);
+    }
+  }, [didMount, setDidMount]);
 
   return size;
 };

@@ -20,7 +20,12 @@
     "module": "esnext",
     "isolatedModules": true,
     "noEmit": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "noFallthroughCasesInSwitch": true
   },
   "exclude": [
     "node_modules"

@@ -24,6 +24,9 @@ export interface SEOProps {
 /**
  * Component copied & altered from Next.js docs:
  * https://nextjs.org/docs/migrating/from-create-react-app#search-engine-optimization
+ *
+ * Also preloading fonts here: https://nextjs.org/docs/basic-features/font-optimization
+ * Note: could make conditional, but most pages will use both.
  */
 export default function SEO({
   description,
@@ -41,6 +44,15 @@ export default function SEO({
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        // can load all weights: wght@300;400;700;
+        href="https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap"
+        rel="stylesheet"
+      />
     </Head>
   );
 }

@@ -7,7 +7,9 @@ import {
 import { BubbleCloud } from "./BubbleCloud";
 import { CSSTransition } from "react-transition-group";
 import { Size } from "../../services/window/useWindowSize";
-const styles = require("./bubbles.module.css");
+import { ClientOnly } from "../../services/window/ClientOnly";
+import clsx from "clsx";
+const styles = require("./bubbles.module.scss");
 
 export interface BubblesScreenProps extends Size {
   tags: TagData[];
@@ -42,11 +44,11 @@ export const BubblesScreen = ({
     <CSSTransition
       appear
       in
-      timeout={500}
+      timeout={1000}
       classNames={{
-        appear: "appear",
-        appearActive: "appearActive",
-        appearDone: "appearDone",
+        appear: styles.loading,
+        appearActive: styles.loadingActive,
+        appearDone: styles.loadingDone,
       }}
     >
       <CSSTransition
@@ -61,19 +63,25 @@ export const BubblesScreen = ({
           exitDone: styles.zoomExitDone,
         }}
       >
-        <div className={styles.container}>
-          <div className={styles.topLeft}>
-            <h1>Linda Paiste</h1>
-          </div>
-          <CSSTransition
-            in={tags.length > 0}
-            appear={tags.length > 0}
-            timeout={500}
-            classNames={{
-              enter: styles.loadedEnter,
-              enterActive: styles.loadedEnterActive,
-            }}
+        <div
+          className="w-screen h-screen overflow-hidden relative flex font-bold font-benchnine uppercase"
+          id={styles.container}
+        >
+          <div
+            className="absolute top-0 left-0 px-6 py-0 transition-all duration-500"
+            id={styles.topLeft}
           >
+            <h1
+              className={clsx(
+                "font-normal margin-0",
+                "transition-all duration-500",
+                "flex flex-col"
+              )}
+            >
+              Linda Paiste
+            </h1>
+          </div>
+          <ClientOnly>
             <BubbleCloud
               width={width}
               height={height}
@@ -81,12 +89,19 @@ export const BubblesScreen = ({
               selected={selected}
               onSelect={setSelected}
             />
-          </CSSTransition>
-          <div className={styles.bottomRight}>
-            <h2>
+          </ClientOnly>
+          <div
+            className="absolute bottom-0 right-0 px-12 py-6 transition-all duration-500"
+            id={styles.bottomRight}
+          >
+            <h2 className="font-normal margin-0 transition-all duration-500">
               Top{" "}
               <a
-                className={styles.underlined}
+                className={clsx(
+                  styles.underlined,
+                  "text-black no-underline",
+                  "transition-all duration-500"
+                )}
                 href="https://stackoverflow.com/users/10431574/linda-paiste"
               >
                 StackOverflow
