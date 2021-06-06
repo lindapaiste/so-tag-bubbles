@@ -1,5 +1,4 @@
 import { IconType } from "react-icons";
-const styles = require("./button.module.scss");
 
 export interface Props {
   url: string;
@@ -8,8 +7,11 @@ export interface Props {
 }
 
 export const LinkButton = ({ url, Icon, text }: Props): JSX.Element => (
-  <a href={url} className={styles.button}>
-    <Icon className={styles.icon} size={20} />
-    <div className={styles.text}>{text}</div>
+  <a
+    href={url}
+    className="inline-flex flex-row items-center uppercase font-benchnine text-black no-underline rounded p-2 bg-green-300 shadow-md"
+  >
+    <Icon className="mr-3" size={20} />
+    <div>{text}</div>
   </a>
 );

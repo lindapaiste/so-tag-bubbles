@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Project } from "../../services/projects/types";
 import { getProject, getProjectSlugs } from "../../services/projects/client";
 import { GithubButton } from "../../components/projects/GithubButton";
-const styles = require("../../components/projects/projects.module.scss");
 
 export interface Props {
   project: Project;
@@ -11,7 +10,7 @@ export interface Props {
 const ProjectPage = ({ project }: Props): JSX.Element => {
   return (
     <div>
-      <h1 className={styles.title}>{project.name}</h1>
+      <h1 className="font-lora italic text-4xl">{project.name}</h1>
       <div>
         {project.links.github ? (
           <GithubButton url={project.links.github} />

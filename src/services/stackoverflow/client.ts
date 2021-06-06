@@ -3,6 +3,8 @@ import axios from "axios";
 import { USER_ID } from "../../config";
 import { Badge, UserBadge } from "./types-badges";
 import { range } from "lodash";
+import topTags from "./my-top-answer-tags.json";
+import badges from "./my-tag-badges.json";
 
 const client = axios.create({
   baseURL: "https://api.stackexchange.com/2.2/",
@@ -88,8 +90,9 @@ const getMultiplePages = async <T>(
  * Loads multiple pages based on the requested count.
  */
 export const getMyTopTags = async (count: number): Promise<TopTagsJson> => {
-  const pages = Math.ceil(count / 100);
-  return getMultiplePages<UserTag>(`users/${USER_ID}/top-answer-tags`, pages);
+  //const pages = Math.ceil(count / 100);
+  //return getMultiplePages<UserTag>(`users/${USER_ID}/top-answer-tags`, pages);
+  return topTags;
 };
 
 /**
