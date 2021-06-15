@@ -21,4 +21,13 @@ describe("TagBadge", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  // mostly including this for the coverage report re: branches
+  it("can handle unknown tags", () => {
+    render(
+      <TagBadgeBox rank="silver" tag_name="not-covered" award_count={10} />
+    );
+    expect(screen.queryByText("not-covered")).toBeInTheDocument();
+    expect(screen.queryByText("10")).toBeInTheDocument();
+  });
 });

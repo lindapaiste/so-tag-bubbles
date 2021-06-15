@@ -22,3 +22,10 @@ BronzeRedux.args = {
   rank: "bronze",
   award_count: 9999,
 };
+
+export const GoldUnknown = Template.bind({});
+GoldUnknown.args = {
+  tag_name: "some-tag",
+  rank: "gold",
+  award_count: 25,
+};
