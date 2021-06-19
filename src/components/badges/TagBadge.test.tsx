@@ -1,8 +1,11 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import renderer from "react-test-renderer";
 import { TagBadgeBox } from "./TagBadge";
+
+/**
+ * @jest-environment jsdom
+ */
 
 describe("TagBadge", () => {
   it("contains the tag name and award count", () => {

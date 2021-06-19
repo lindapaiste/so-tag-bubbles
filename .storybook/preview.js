@@ -1,5 +1,5 @@
 // Import the global style enabling tailwind classes
-import '../src/config/global.css';
+import '../src/config/global.scss';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

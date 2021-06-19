@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   TagData,
   TagNode,
@@ -9,6 +9,7 @@ import { CSSTransition } from "react-transition-group";
 import { Size } from "../../services/window/useWindowSize";
 import { ClientOnly } from "../../services/window/ClientOnly";
 import clsx from "clsx";
+import { useAfterMount } from "../../services/window/useAfterMount";
 const styles = require("./bubbles.module.scss");
 
 export interface BubblesScreenProps extends Size {
@@ -39,6 +40,13 @@ export const BubblesScreen = ({
    * Store the currently selected parent node, or null if none.
    */
   const [selected, setSelected] = useState<TagNode | null>(null);
+
+  /**
+   * Want to scale up from 0 starting at 0 on first render.
+   */
+  const [loaded, setLoaded] = useState(false);
+
+  useAfterMount(() => setLoaded(true));
 
   return (
     <CSSTransition
@@ -88,6 +96,7 @@ export const BubblesScreen = ({
               nodes={nodes}
               selected={selected}
               onSelect={setSelected}
+              loaded={loaded}
             />
           </ClientOnly>
           <div

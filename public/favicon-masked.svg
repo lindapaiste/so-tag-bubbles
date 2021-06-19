@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" width="260" height="260" xml:space="preserve">
+    <circle cx="130" cy="130" r="130" fill="rgb(99, 203, 212)" mask="url(#initials)"/>
+    <mask id="initials">
+        <rect width="260" height="260" fill="#ffffff" x="0" y="0" />
+    <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:200px;line-height:1;font-family:Impact;fill:#000000;fill-opacity:1;" x="30" y="208" transform="scale(1.2,1)">LP</text>
+    </mask>
+</svg>

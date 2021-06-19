@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 import { rankColors } from "./rankColors";
 import { BadgeMedal, BadgeMedalProps } from "./BadgeMedal";

@@ -1,3 +1,5 @@
+import * as d3 from "d3";
+import { HierarchyCircularNode } from "d3";
 import { Meta, Story } from "@storybook/react";
 import { ParentBubble } from "./ParentBubble";
 import json from "../../services/stackoverflow/my-top-answer-tags.json";
@@ -7,9 +9,6 @@ import {
   TagNode,
   toSerializable,
 } from "../../services/d3/usePackLayout";
-import React from "react";
-import * as d3 from "d3";
-import { HierarchyCircularNode } from "d3";
 import { PACK_LAYOUT_PADDING } from "../../config";
 
 /**
@@ -45,6 +44,7 @@ const Template: Story<Props> = ({ isSelected, colorValue, node }: Props) => (
     isSelected={isSelected}
     select={() => undefined}
     deselect={() => undefined}
+    clearSelection={() => undefined}
   />
 );
 

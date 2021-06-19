@@ -1,4 +1,3 @@
-import React from "react";
 import { IconType } from "react-icons";
 import { SiJavascript, SiReact, SiRedux, SiTypescript } from "react-icons/si";
 import { IoTrophySharp } from "react-icons/io5";

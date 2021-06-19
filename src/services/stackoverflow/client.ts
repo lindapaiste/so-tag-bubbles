@@ -42,6 +42,7 @@ const createPaginatedGet =
  * Fetch multiple poges up to the max, stopping if the end is reached.
  * Needs to go sequentially in order to access has_next of the previous page.
  */
+// eslint-disable-next-line  @typescript-eslint/no-unused-vars
 const getSequentialPages = async <T>(
   path: string,
   maxPages: number,

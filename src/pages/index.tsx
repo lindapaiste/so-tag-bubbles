@@ -1,7 +1,6 @@
 import { useWindowSize } from "../services/window/useWindowSize";
-import React from "react";
 import { BubblesScreen } from "../components/bubbles/BubblesScreen";
-import SEO from "../services/seo/SEO";
+import SEO from "../services/head";
 import { GetStaticProps } from "next";
 import { getMyTopTags } from "../services/stackoverflow/client";
 import { TagData } from "../services/d3/usePackLayout";

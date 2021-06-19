@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { PackCircle } from "d3";
-import React, { CSSProperties, FC } from "react";
+import { CSSProperties, FC } from "react";
 import clsx from "clsx";
 
 /**
@@ -40,7 +40,7 @@ export type BubbleProps = {
   colorValue: number;
 } & /**
  * Can pass through any props to the underlying div.
- */ JSX.IntrinsicElements["div"];
+ */ JSX.IntrinsicElements["li"];
 
 export const Bubble: FC<BubbleProps> = ({
   node,
@@ -50,12 +50,14 @@ export const Bubble: FC<BubbleProps> = ({
   ...props
 }) => {
   return (
-    <div
+    <li
       {...props}
+      role="treeitem"
       className={clsx(
         "absolute",
         "transition-all duration-500",
         "origin-center scale-1",
+        "focus:outline-none",
         className
       )}
       style={{
@@ -64,6 +66,6 @@ export const Bubble: FC<BubbleProps> = ({
       }}
     >
       {children}
-    </div>
+    </li>
   );
 };

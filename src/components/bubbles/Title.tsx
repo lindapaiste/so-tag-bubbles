@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 import { useClampFontSize } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
@@ -43,6 +42,7 @@ export const Title = ({
 
   return (
     <div
+      id={`tag${isLeaf ? "" : "-group"}-${text}-name`}
       className={clsx(
         "h-full",
         "flex flex-col items-center justify-center",
@@ -59,6 +59,8 @@ export const Title = ({
       ))}
       {isLeaf && (
         <div
+          id={`tag-${text}-details`}
+          aria-hidden={!isActive}
           // Note: use an arbitrarily high max height for proper transition
           className={clsx(
             "transition-all duration-500",
