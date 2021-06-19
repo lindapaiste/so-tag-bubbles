@@ -1,7 +1,0 @@
-{
-  "name": "personal-site",
-  "version": 1,
-  "env": {
-    "MONGODB_URI": "@personal-mongodb-uri"
-  }
-}
