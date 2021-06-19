@@ -1,4 +1,3 @@
-import React from "react";
 import { Story } from "@storybook/react";
 import { TagBadgeBox, TagBadgeProps } from "./TagBadge";
 
@@ -21,4 +20,11 @@ BronzeRedux.args = {
   tag_name: "redux",
   rank: "bronze",
   award_count: 9999,
+};
+
+export const GoldUnknown = Template.bind({});
+GoldUnknown.args = {
+  tag_name: "some-tag",
+  rank: "gold",
+  award_count: 25,
 };

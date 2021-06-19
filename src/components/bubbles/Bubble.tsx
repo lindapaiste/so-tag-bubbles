@@ -1,7 +1,8 @@
 import * as d3 from "d3";
 import { PackCircle } from "d3";
-import React, { CSSProperties, FC } from "react";
+import { CSSProperties, FC } from "react";
 import clsx from "clsx";
+import { percent } from "../../services/units";
 
 /**
  * Create the interpolator to map from values 0-2.
@@ -17,11 +18,10 @@ const colorInterpolator = d3
  * with absolute position and defined size.
  */
 const circleStyle = (circle: PackCircle): CSSProperties => ({
-  top: circle.y - circle.r,
-  left: circle.x - circle.r,
-  width: 2 * circle.r,
-  height: 2 * circle.r,
-  borderRadius: circle.r,
+  top: percent(circle.y - circle.r),
+  left: percent(circle.x - circle.r),
+  width: percent(2 * circle.r),
+  height: percent(2 * circle.r),
 });
 
 /**
@@ -40,7 +40,7 @@ export type BubbleProps = {
   colorValue: number;
 } & /**
  * Can pass through any props to the underlying div.
- */ JSX.IntrinsicElements["div"];
+ */ JSX.IntrinsicElements["li"];
 
 export const Bubble: FC<BubbleProps> = ({
   node,
@@ -48,22 +48,23 @@ export const Bubble: FC<BubbleProps> = ({
   children,
   className,
   ...props
-}) => {
-  return (
-    <div
-      {...props}
-      className={clsx(
-        "absolute",
-        "transition-all duration-500",
-        "origin-center scale-1",
-        className
-      )}
-      style={{
-        ...circleStyle(node),
-        background: colorInterpolator(colorValue),
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+}) => (
+  <li
+    {...props}
+    role="treeitem"
+    className={clsx(
+      "rounded-full",
+      "absolute",
+      "transition-all duration-500",
+      "origin-center",
+      "focus:outline-none",
+      className
+    )}
+    style={{
+      ...circleStyle(node),
+      background: colorInterpolator(colorValue),
+    }}
+  >
+    {children}
+  </li>
+);

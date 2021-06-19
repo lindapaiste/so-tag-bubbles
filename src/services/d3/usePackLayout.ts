@@ -79,17 +79,13 @@ export const prepareTags = (tags: TagData[]): HierarchyNode<TagData> => {
     .sum((d) => d.answer_score);
 };
 
-export interface Props {
-  width: number;
-  height: number;
-  tags: TagData[];
-}
-
 /**
  * Do all of the data formatting and D3 computations here.
  * Instead of returning the root node, return an array of parent groups.
+ *
+ * Return the layout for a 100x100 size -- this can be converted to vmin units.
  */
-export const usePackLayout = ({ width, height, tags }: Props): TagNode[] => {
+export const usePackLayout = (tags: TagData[]): TagNode[] => {
   /**
    * Nodes depend on the tags, but not the size.
    */
@@ -99,8 +95,8 @@ export const usePackLayout = ({ width, height, tags }: Props): TagNode[] => {
    * Layout depends on the size.
    */
   const packLayout = useMemo(
-    () => d3.pack<TagData>().size([width, height]).padding(PACK_LAYOUT_PADDING),
-    [width, height]
+    () => d3.pack<TagData>().size([100, 100]).padding(PACK_LAYOUT_PADDING),
+    []
   );
 
   /**

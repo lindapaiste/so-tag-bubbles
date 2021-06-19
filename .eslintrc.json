@@ -8,12 +8,15 @@
     "react",
     "import",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "jsx-a11y"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript",
     "prettier"
   ],
   "rules": {
@@ -28,7 +31,8 @@
     "@typescript-eslint/no-var-requires": "off", // would like to re-implement if I can figure out CSS issue
     "no-undef": "off",
     "no-plusplus": "off",
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.stories.tsx", "**/*.test.ts", "**/*.test.tsx", "**/__tests__/*"]}]
   },
   "settings": {
     "react": {

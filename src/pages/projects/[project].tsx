@@ -7,18 +7,16 @@ export interface Props {
   project: Project;
 }
 
-const ProjectPage = ({ project }: Props): JSX.Element => {
-  return (
+const ProjectPage = ({ project }: Props): JSX.Element => (
+  <div>
+    <h1 className="font-lora italic text-4xl">{project.name}</h1>
     <div>
-      <h1 className="font-lora italic text-4xl">{project.name}</h1>
-      <div>
-        {project.links.github ? (
-          <GithubButton url={project.links.github} />
-        ) : null}
-      </div>
+      {project.links.github ? (
+        <GithubButton url={project.links.github} />
+      ) : null}
     </div>
-  );
-};
+  </div>
+);
 
 export default ProjectPage;
 

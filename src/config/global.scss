@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  overflow: hidden;
+  /* override user-agent margin */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  /* no blue links */
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}

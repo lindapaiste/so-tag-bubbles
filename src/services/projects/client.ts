@@ -7,9 +7,7 @@ const data = json as Partial<Record<string, Project>>;
  * Get the slugs for all projects.
  * Used to pre-render product pages.
  */
-export const getProjectSlugs = async (): Promise<string[]> => {
-  return Object.keys(json);
-};
+export const getProjectSlugs = async (): Promise<string[]> => Object.keys(json);
 
 /**
  * Look up a project by slug.

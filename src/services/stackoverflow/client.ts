@@ -1,8 +1,8 @@
-import { SoResponse, TopTagsJson, UserTag } from "./types";
 import axios from "axios";
+import { range } from "lodash";
+import { SoResponse, TopTagsJson, UserTag } from "./types";
 import { USER_ID } from "../../config";
 import { Badge, UserBadge } from "./types-badges";
-import { range } from "lodash";
 
 const client = axios.create({
   baseURL: "https://api.stackexchange.com/2.2/",
@@ -42,6 +42,7 @@ const createPaginatedGet =
  * Fetch multiple poges up to the max, stopping if the end is reached.
  * Needs to go sequentially in order to access has_next of the previous page.
  */
+// eslint-disable-next-line  @typescript-eslint/no-unused-vars
 const getSequentialPages = async <T>(
   path: string,
   maxPages: number,

@@ -1,8 +1,9 @@
-import React, { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
+import clsx from "clsx";
 import { Title } from "./Title";
 import { Bubble, BubbleProps } from "./Bubble";
 import { TagNode } from "../../services/d3/usePackLayout";
-import clsx from "clsx";
+
 const styles = require("./bubbles.module.scss");
 
 export type ChildBubbleProps = BubbleProps & {
@@ -21,7 +22,7 @@ export type ChildBubbleProps = BubbleProps & {
   /**
    * Callback to update the active child tag.
    */
-  setActiveTagName?: React.Dispatch<React.SetStateAction<string | null>>;
+  setActiveTagName?: Dispatch<SetStateAction<string | null>>;
 };
 
 /**
@@ -37,6 +38,10 @@ export const ChildBubble: FC<ChildBubbleProps> = ({
 }) => {
   const tag = node.data.tag_name;
 
+  const onMouseEnter = () => setActiveTagName?.(tag);
+  const onMouseLeave = () =>
+    setActiveTagName?.((current) => (current === tag ? null : current));
+
   return (
     <Bubble
       {...bubbleProps}
@@ -44,16 +49,22 @@ export const ChildBubble: FC<ChildBubbleProps> = ({
       className={clsx(
         styles.childBubble,
         isSelected ? "transform scale-1" : "transform scale-0",
-        isSelected && "duration-700"
+        isSelected && "duration-700",
+        "cursor-default"
       )}
       // prevent parent bubble clicks -- must click outside the circle
       onClick={(e) => e.stopPropagation()}
       // activate on hover
-      onMouseEnter={() => setActiveTagName?.(tag)}
+      onMouseEnter={onMouseEnter}
+      onFocus={onMouseEnter}
       // deactivate on end hover, only if it's still active
-      onMouseLeave={() =>
-        setActiveTagName?.((current) => (current === tag ? null : current))
-      }
+      onMouseLeave={onMouseLeave}
+      onBlur={onMouseLeave}
+      // aria attributes
+      aria-selected={isSelected}
+      aria-hidden={!isSelected}
+      aria-labelledby={`tag-${tag}-name`}
+      aria-details={`tag-${tag}-details`}
     >
       <Title
         node={node}

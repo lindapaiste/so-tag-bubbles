@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import { KeyboardEvent, useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import clsx from "clsx";
 import {
   TagData,
   TagNode,
   usePackLayout,
 } from "../../services/d3/usePackLayout";
 import { BubbleCloud } from "./BubbleCloud";
-import { CSSTransition } from "react-transition-group";
-import { Size } from "../../services/window/useWindowSize";
-import { ClientOnly } from "../../services/window/ClientOnly";
-import clsx from "clsx";
+import { useAfterMount } from "../../services/window/useAfterMount";
+
 const styles = require("./bubbles.module.scss");
 
-export interface BubblesScreenProps extends Size {
+export interface BubblesScreenProps {
   tags: TagData[];
 }
 
@@ -20,25 +20,34 @@ export interface BubblesScreenProps extends Size {
  * Want h1/h2 titles to be effected by zoom state, so
  * need to lift the selection state up to this component.
  */
-export const BubblesScreen = ({
-  width,
-  height,
-  tags,
-}: BubblesScreenProps): JSX.Element => {
+export const BubblesScreen = ({ tags }: BubblesScreenProps): JSX.Element => {
   /**
    * Create the layout.
    * The parent bubbles are the children of the root node.
    */
-  const nodes = usePackLayout({
-    width,
-    height,
-    tags,
-  });
+  const nodes = usePackLayout(tags);
 
   /**
    * Store the currently selected parent node, or null if none.
    */
   const [selected, setSelected] = useState<TagNode | null>(null);
+
+  /**
+   * Want to scale up from 0 starting at 0 on first render.
+   */
+  const [loaded, setLoaded] = useState(false);
+
+  useAfterMount(() => setLoaded(true));
+
+  /**
+   * Keyboard event -- close selection on escape key
+   * Note: must use keydown event because keypress does not fire for escape
+   */
+  const handleKey = (e: KeyboardEvent) => {
+    if (e.key === "Esc" || e.key === "Escape") {
+      setSelected(null);
+    }
+  };
 
   return (
     <CSSTransition
@@ -64,8 +73,18 @@ export const BubblesScreen = ({
         }}
       >
         <div
-          className="w-screen h-screen overflow-hidden relative flex font-bold font-benchnine uppercase"
+          className={clsx(
+            "w-screen h-screen overflow-hidden",
+            "relative flex",
+            "font-bold font-benchnine uppercase",
+            selected === null ? "cursor-default" : "cursor-zoom-out",
+            "select-none"
+          )}
           id={styles.container}
+          // exit selection by clicking on the background or pressing Esc
+          onClick={() => setSelected(null)}
+          onKeyDown={handleKey}
+          role="presentation" // not really sure what the best role is for a background cancel
         >
           <div
             className="absolute top-0 left-0 px-6 py-0 transition-all duration-500"
@@ -81,15 +100,12 @@ export const BubblesScreen = ({
               Linda Paiste
             </h1>
           </div>
-          <ClientOnly>
-            <BubbleCloud
-              width={width}
-              height={height}
-              nodes={nodes}
-              selected={selected}
-              onSelect={setSelected}
-            />
-          </ClientOnly>
+          <BubbleCloud
+            nodes={nodes}
+            selected={selected}
+            onSelect={setSelected}
+            loaded={loaded}
+          />
           <div
             className="absolute bottom-0 right-0 px-12 py-6 transition-all duration-500"
             id={styles.bottomRight}

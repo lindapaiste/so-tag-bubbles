@@ -25,6 +25,7 @@ a.underlined:hover {
 
 /* ---------- LOAD IN EFFECT ----------- */
 
+/*
 .loading .parentBubble {
   transform: scale(0);
 }
@@ -33,6 +34,7 @@ a.underlined:hover {
   transform: scale(1);
   transition: all 500ms;
 }
+ */
 
 /* note: overflowing and snapping back doesn't work because the transition on the snap back will override other durations */
 

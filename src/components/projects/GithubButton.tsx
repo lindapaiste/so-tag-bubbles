@@ -9,6 +9,4 @@ export interface Props {
 export const GithubButton = ({
   url,
   text = "Source Code",
-}: Props): JSX.Element => {
-  return <LinkButton text={text} url={url} Icon={VscGithub} />;
-};
+}: Props): JSX.Element => <LinkButton text={text} url={url} Icon={VscGithub} />;

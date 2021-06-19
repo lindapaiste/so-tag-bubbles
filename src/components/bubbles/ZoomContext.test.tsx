@@ -1,8 +1,12 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { renderHook } from "@testing-library/react-hooks";
 import { useClampFontSize, ZoomContext } from "./ZoomContext";
 import { BUBBLE_MINIMUM_FONT_SIZE } from "../../config";
+
+/**
+ * @jest-environment jsdom
+ */
 
 describe("useClampFontSize", () => {
   it("defaults to a scale of 1 and limits size based on the minimum", () => {
