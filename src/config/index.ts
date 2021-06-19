@@ -5,7 +5,7 @@ export const USER_ID = 10431574;
 /**
  * Padding amount for the d3 circle pack layout.
  */
-export const PACK_LAYOUT_PADDING = 3;
+export const PACK_LAYOUT_PADDING = 0.5;
 /**
  * The number of tags to show in the tag cloud. Can adjust this amount.
  */

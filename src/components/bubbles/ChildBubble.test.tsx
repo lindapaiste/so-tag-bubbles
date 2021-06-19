@@ -22,26 +22,14 @@ const node = {
 describe("ChildBubble", () => {
   it("renders correctly", () => {
     const tree = renderer
-      .create(
-        <ChildBubble
-          colorValue={1}
-          node={node}
-          isActive={true}
-          isSelected={true}
-        />
-      )
+      .create(<ChildBubble colorValue={1} node={node} isActive isSelected />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("is visible when isSelected={true}", () => {
     render(
-      <ChildBubble
-        colorValue={1}
-        node={node}
-        isActive={false}
-        isSelected={true}
-      />
+      <ChildBubble colorValue={1} node={node} isActive={false} isSelected />
     );
     expect(
       screen.getByRole("treeitem", {
@@ -68,25 +56,13 @@ describe("ChildBubble", () => {
 
   it("hides details when isActive={false}", () => {
     render(
-      <ChildBubble
-        colorValue={1}
-        node={node}
-        isActive={false}
-        isSelected={true}
-      />
+      <ChildBubble colorValue={1} node={node} isActive={false} isSelected />
     );
     expect(screen.getByText("Answers")).not.toBeVisible();
   });
 
   it("shows details when isActive={true}", () => {
-    render(
-      <ChildBubble
-        colorValue={1}
-        node={node}
-        isActive={true}
-        isSelected={true}
-      />
-    );
+    render(<ChildBubble colorValue={1} node={node} isActive isSelected />);
     expect(screen.getByText("Answers")).toBeVisible();
   });
 

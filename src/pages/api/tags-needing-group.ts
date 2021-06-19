@@ -19,7 +19,7 @@ const route: NextApiHandler = async (req, res) => {
    */
   const { limit } = req.query;
   const str = Array.isArray(limit) ? limit[0] : limit;
-  const num = str ? parseInt(str) : TAG_COUNT;
+  const num = str ? parseInt(str, 10) : TAG_COUNT;
   const data = await stackApi.getMyTopTags(num);
   const tags = data.items.slice(0, num);
   res.status(200).json(groupNeeded(tags));

@@ -23,7 +23,7 @@ interface Props {
 const tags = prepareTags(json.items);
 const layout = d3.pack<TagData>().size([400, 400]).padding(PACK_LAYOUT_PADDING);
 const root = layout(tags);
-const node = toSerializable(
+const exampleNode = toSerializable(
   root.children?.[0] as HierarchyCircularNode<TagData>
 );
 
@@ -33,7 +33,7 @@ export default {
   args: {
     isSelected: false,
     colorValue: 0.5,
-    node,
+    node: exampleNode,
   },
 } as Meta;
 

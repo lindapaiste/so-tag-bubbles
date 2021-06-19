@@ -3,18 +3,18 @@ import clsx from "clsx";
 import { ParentBubble } from "./ParentBubble";
 import { ZoomContext } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
-import { Size } from "../../services/window/useWindowSize";
+import { percent } from "../../services/units";
 
-export interface BubbleCloudProps extends Size {
+export interface BubbleCloudProps {
   nodes: TagNode[];
   selected: TagNode | null;
   onSelect: Dispatch<SetStateAction<TagNode | null>>;
   loaded?: boolean;
 }
 
+// TODO: zooming in on tiny bubbles causes oblong shapes - rounding errors?
+
 export const BubbleCloud = ({
-  width,
-  height,
   nodes,
   selected,
   onSelect,
@@ -27,8 +27,8 @@ export const BubbleCloud = ({
    */
   const zoomScale = selected
     ? Math.min(
-        (0.8 * Math.min(width, height)) / (2 * selected.r), // 80% of canvas
-        5 // maximum of 5x
+        80 / (2 * selected.r) // 80% of canvas
+        // 5 // maximum of 5x
       )
     : 1;
 
@@ -38,21 +38,10 @@ export const BubbleCloud = ({
    * so that it is in the center of the screen.
    */
   const transform = selected
-    ? `scale(${zoomScale}) translate(${0.5 * width - selected.x}px, ${
-        0.5 * height - selected.y
-      }px)`
+    ? `scale(${zoomScale}) translate(${percent(50 - selected.x)}, ${percent(
+        50 - selected.y
+      )})`
     : undefined;
-
-  /**
-   * Keyboard event -- close selection on escape key
-   * Note: must use keydown event because keypress does not fire for escape
-   */
-  const handleKey = (e: React.KeyboardEvent) => {
-    console.log("handleKey");
-    if (e.key === "Esc" || e.key === "Escape") {
-      onSelect(null);
-    }
-  };
 
   /**
    * Render the zoom scale provider, the container div,
@@ -65,21 +54,22 @@ export const BubbleCloud = ({
         aria-label="Top Tags"
         className={clsx(
           "transition-transform duration-500",
-          "w-screen h-screen",
-          selected === null ? "cursor-default" : "cursor-zoom-out",
-          "select-none"
+          "w-screen h-screen m-auto",
+          "relative"
         )}
-        style={{ transform }}
-        // exit selection by clicking on the background or pressing Esc
-        onClick={() => onSelect(null)}
-        onKeyDown={handleKey}
+        style={{
+          transform,
+          // square
+          maxWidth: "100vh",
+          maxHeight: "100vw",
+        }}
       >
         {nodes.map((node, i) => (
           <ParentBubble
             key={`group-${node.data.tag_name}`}
             node={node}
             select={() => onSelect(node)}
-            // deselect is conditional -- won't set to null if another tag is selected/
+            // deselect is conditional -- won't set to null if another tag is selected
             deselect={() =>
               onSelect((current) =>
                 current?.data.tag_name === node.data.tag_name ? null : current

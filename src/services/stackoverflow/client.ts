@@ -1,8 +1,8 @@
-import { SoResponse, TopTagsJson, UserTag } from "./types";
 import axios from "axios";
+import { range } from "lodash";
+import { SoResponse, TopTagsJson, UserTag } from "./types";
 import { USER_ID } from "../../config";
 import { Badge, UserBadge } from "./types-badges";
-import { range } from "lodash";
 
 const client = axios.create({
   baseURL: "https://api.stackexchange.com/2.2/",

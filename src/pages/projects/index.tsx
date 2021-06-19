@@ -1,5 +1,3 @@
-const Page = (): JSX.Element => {
-  return <div>Projects List Goes Here</div>;
-};
+const Page = (): JSX.Element => <div>Projects List Goes Here</div>;
 
 export default Page;

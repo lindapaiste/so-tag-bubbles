@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 import { Bubble } from "./Bubble";
 import { Title } from "./Title";
 import { ChildBubble } from "./ChildBubble";
 import { TagNode } from "../../services/d3/usePackLayout";
-import clsx from "clsx";
+
 const styles = require("./bubbles.module.scss");
 
 interface ParentBubbleProps {
@@ -71,7 +72,7 @@ export const ParentBubble = ({
             // cursor style
             isSelected ? "cursor-zoom-out" : "cursor-zoom-in",
             // load in effect
-            loaded ? "transform scale-1" : "transform-scale-0"
+            loaded ? "transform scale-1" : "transform scale-0"
           )}
           node={node}
           colorValue={colorBasis}
@@ -88,7 +89,7 @@ export const ParentBubble = ({
           // selecting
           onClick={(e) => {
             e.stopPropagation(); // override background click
-            isSelected ? deselect() : select();
+            (isSelected ? deselect : select)();
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") select();

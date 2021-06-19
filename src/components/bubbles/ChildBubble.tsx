@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
+import clsx from "clsx";
 import { Title } from "./Title";
 import { Bubble, BubbleProps } from "./Bubble";
 import { TagNode } from "../../services/d3/usePackLayout";
-import clsx from "clsx";
+
 const styles = require("./bubbles.module.scss");
 
 export type ChildBubbleProps = BubbleProps & {
@@ -21,7 +22,7 @@ export type ChildBubbleProps = BubbleProps & {
   /**
    * Callback to update the active child tag.
    */
-  setActiveTagName?: React.Dispatch<React.SetStateAction<string | null>>;
+  setActiveTagName?: Dispatch<SetStateAction<string | null>>;
 };
 
 /**

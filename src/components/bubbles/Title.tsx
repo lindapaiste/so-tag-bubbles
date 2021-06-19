@@ -1,7 +1,10 @@
+import { useContext, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
-import { useClampFontSize } from "./ZoomContext";
+import { ZoomContext } from "./ZoomContext";
 import { TagNode } from "../../services/d3/usePackLayout";
-import { CHARACTER_WIDTH_RATIO } from "../../config";
+import { BUBBLE_MINIMUM_FONT_SIZE, CHARACTER_WIDTH_RATIO } from "../../config";
+import { vmin } from "../../services/units";
+
 const styles = require("./bubbles.module.scss");
 
 export interface TitleProps {
@@ -14,6 +17,9 @@ export interface TitleProps {
  * Approximates the length of text based on the number of characters.
  * Figure out the radius of the text rectangle based on the number of
  * lines and letters per line.  Then can scale that to fit the circle.
+ *
+ * Use a local state because need to enforce the minimum font size
+ * AFTER the initial render due to SSR hydration.
  */
 export const Title = ({
   node,
@@ -22,23 +28,32 @@ export const Title = ({
 }: TitleProps): JSX.Element => {
   const { r: radius, data } = node;
   const { tag_name: text = "" } = data;
-  const isLeaf = node.children === undefined;
-
   const words = text.toString().split("-");
-  const maxWordLen = Math.max(...words.map((w) => w.length));
-  const x = CHARACTER_WIDTH_RATIO * maxWordLen;
-  const y = words.length;
-  const textR = Math.sqrt(x * x + y * y);
 
-  const titleSize = useClampFontSize((2 * radius) / textR);
+  const isLeaf = !node.children;
 
   // TODO: better solutions for multi-line and short names
-  const detailSize = useClampFontSize(
-    Math.min(
-      //.5 * titleSize,
-      0.4 * radius
-    )
-  );
+  const detailBase = 0.4 * node.r;
+  const titleBase = useMemo(() => {
+    const maxWordLen = Math.max(...words.map((w) => w.length));
+    const x = CHARACTER_WIDTH_RATIO * maxWordLen;
+    const y = words.length;
+    const textR = Math.sqrt(x * x + y * y);
+    return (2 * radius) / textR;
+  }, [node]);
+
+  const [titleSize, setTitleSize] = useState(titleBase);
+  const [detailSize, setDetailSize] = useState(detailBase);
+
+  const scale = useContext(ZoomContext);
+
+  useEffect(() => {
+    // okay to access window directly as long as it's inside of a useEffect
+    const min = Math.min(window.innerHeight, window.innerWidth);
+    const minVminSize = (100 * BUBBLE_MINIMUM_FONT_SIZE) / (min * scale);
+    setTitleSize(Math.max(titleBase, minVminSize));
+    setDetailSize(Math.max(detailBase, minVminSize));
+  }, [scale]);
 
   return (
     <div
@@ -51,7 +66,7 @@ export const Title = ({
         className
       )}
       style={{
-        fontSize: `${titleSize}px`,
+        fontSize: vmin(titleSize),
       }}
     >
       {words.map((word) => (
@@ -69,7 +84,7 @@ export const Title = ({
               : "transform scale-y-0 max-h-0"
           )}
           style={{
-            fontSize: `${detailSize}px`,
+            fontSize: vmin(detailSize),
           }}
         >
           <div>

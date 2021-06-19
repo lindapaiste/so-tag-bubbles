@@ -23,7 +23,7 @@ export default function TagBadges({ initialData }: Props): JSX.Element {
   return (
     <div>
       <SEO
-        title={"Linda Paiste - Front End Web Developer - Houston, TX"}
+        title="Linda Paiste - Front End Web Developer - Houston, TX"
         appendSiteName={false}
       />
       <div className="font-lora flex flex-col items-center">
