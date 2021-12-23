@@ -30,6 +30,8 @@ const getIconComponent = (tag: string): IconType | undefined => {
   if (tag.includes("redux")) return SiRedux;
   // applies to "typescript", "typescript-generics", etc.
   if (tag.includes("typescript")) return SiTypescript;
+  // applies to "react-native", etc.
+  if (tag.includes("react")) return SiReact;
   return undefined;
 };
 /**
