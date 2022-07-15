@@ -31,7 +31,7 @@ export default function TagBadges({ initialData }: Props): JSX.Element {
           {"Among my peers, here's where I "}
           <span className="font-bold italic text-5xl">excel</span>
         </h3>
-        <div className="flex flex-wrap p-4 max-w-screen-lg">
+        <div className="flex flex-wrap p-4 max-w-screen-xl">
           {badges.map((badge) => (
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4" key={badge.badge_id}>
               <TagBadgeBox
