@@ -1,11 +1,5 @@
 import { IconType } from "react-icons";
-import {
-  SiJavascript,
-  SiReact,
-  SiReactrouter,
-  SiRedux,
-  SiTypescript,
-} from "react-icons/si";
+import { SiJavascript, SiReact, SiReactrouter, SiRedux, SiTypescript } from "react-icons/si";
 import { IoTrophySharp } from "react-icons/io5";
 import clsx from "clsx";
 import { rankColors } from "./rankColors";
@@ -60,7 +54,7 @@ export const BadgeMedal = ({
     <div
       className={clsx(
         "box-content border-solid border-2",
-        "w-16 h-16 rounded-full",
+        "w-16 h-16 rounded-full shadow-md",
         "relative"
       )}
       style={{ borderColor: darker, background: lighter, overflow: "hidden" }}
