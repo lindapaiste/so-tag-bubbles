@@ -1,13 +1,10 @@
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import clsx from "clsx";
-import {
-  TagData,
-  TagNode,
-  usePackLayout,
-} from "../../services/d3/usePackLayout";
+import { TagData, TagNode, usePackLayout } from "../../services/d3/usePackLayout";
 import { BubbleCloud } from "./BubbleCloud";
 import { useAfterMount } from "../../services/window/useAfterMount";
+import { safeAccessWindow } from "../../services/window";
 
 const styles = require("./bubbles.module.scss");
 
@@ -31,6 +28,13 @@ export const BubblesScreen = ({ tags }: BubblesScreenProps): JSX.Element => {
    * Store the currently selected parent node, or null if none.
    */
   const [selected, setSelected] = useState<TagNode | null>(null);
+
+  /**
+   * Move the bubbles into full view if clicked after scrolling.
+   */
+  useEffect(() => {
+    safeAccessWindow()?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [selected]);
 
   /**
    * Want to scale up from 0 starting at 0 on first render.

@@ -38,3 +38,11 @@ export const CHARACTER_WIDTH_RATIO = 0.43;
  * Title to be appended to SEO title tags
  */
 export const SITE_TITLE = "Linda Paiste";
+/**
+ * Login name for GitHub API calls and links
+ */
+export const GITHUB_USERNAME = "lindapaiste";
+/**
+ * Github API token via env vars
+ */
+export const GITHUB_TOKEN = process.env.GITHUB_TOKEN;

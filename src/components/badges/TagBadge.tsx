@@ -26,7 +26,7 @@ export const TagBadgeBox = ({
       className={clsx(
         "font-lora",
         "flex flex-row justify-between items-center",
-        "border-solid border rounded-md p-3"
+        "border-solid border rounded-md p-3 shadow-md"
       )}
       style={{ borderColor: darker, background: lighter }}
     >

@@ -1,0 +1,13 @@
+.underline {
+  border-bottom: 2px solid #50d7cb;
+}
+
+.bgGradient {
+  background: linear-gradient(63deg, #90afeb, #50d7cb);
+}
+
+.glow {
+  stroke: #50d7cb;
+  paint-order: stroke;
+  stroke-width: 1px;
+}
