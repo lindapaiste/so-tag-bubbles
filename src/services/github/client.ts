@@ -1,10 +1,14 @@
 import axios from "axios";
-import { mapValues, orderBy } from "lodash";
-import { ActivityCounts, ActivityResponse, ContributedRepo, RepositoryInfo } from "./types";
+import { groupBy, orderBy, partition } from "lodash";
+import {
+  ActivityCounts,
+  ContributedRepo,
+  IssueOrPr,
+  IssueSearchResponse,
+} from "./types";
 import { GITHUB_TOKEN } from "../../config";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const graphQuery = async <T = any>(query: string): Promise<T> => {
+export const graphQuery = async <T>(query: string): Promise<T> => {
   const res = await axios({
     url: "https://api.github.com/graphql",
     method: "POST",
@@ -15,79 +19,99 @@ const graphQuery = async <T = any>(query: string): Promise<T> => {
       query,
     },
   });
+  if (res.data.errors) {
+    throw new Error(
+      `error in graphql response: ${JSON.stringify(res.data.errors)}`
+    );
+  }
   return res.data.data; // data property on response data
 };
 
-// Note: previously included both issues and pull requests,
-// but right now I don't want to include repos with issues only.
-export const getContributedRepos = async (): Promise<RepositoryInfo[]> => {
-  const data = await graphQuery(`query
+// Access repos via search to include older contributions.
+export const getIssueSearchPage = async (
+  endCursor?: string
+): Promise<IssueSearchResponse> => {
+  const data = await graphQuery<{ search: IssueSearchResponse }>(`query
     {
-      viewer {
-        repositoriesContributedTo(
-          first: 100
-          contributionTypes: [PULL_REQUEST]
-          privacy: PUBLIC
-        ) {
-          totalCount
-          nodes {
-            nameWithOwner
-            name
-            owner {
-              avatarUrl
-              login
+      search(
+        query: "author:lindapaiste -org:lindapaiste is:public"
+        type: ISSUE
+        first: 100
+        ${endCursor ? `after: "${endCursor}"` : ""}
+      ) {
+        nodes {
+          ... on Issue {
+            __typename
+            repository {
+              ...repoFields
             }
-            url
+            state
           }
-          pageInfo {
-            endCursor
-            hasNextPage
+          ... on PullRequest {
+            __typename
+            repository {
+              ...repoFields
+            }
+            state
+            merged
           }
         }
+        issueCount
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
       }
+    }
+
+    fragment repoFields on Repository {
+      name
+      nameWithOwner
+      owner {
+        avatarUrl
+        login
+      }
+      url
     }`);
-  return data.viewer.repositoriesContributedTo.nodes;
+  return data.search;
 };
 
-export const activityInRepo = async (
-  nameWithOwner: string
-): Promise<ActivityCounts> => {
-  const data = await graphQuery<ActivityResponse>(`query
-    {
-      pullRequest: search(
-        query: "author:lindapaiste repo:${nameWithOwner} is:pr"
-        type: ISSUE
-      ) {
-        issueCount
-      }
-      merged: search(
-        query: "author:lindapaiste repo:${nameWithOwner} is:pr is:merged"
-        type: ISSUE
-      ) {
-        issueCount
-      }
-      issue: search(
-        query: "author:lindapaiste repo:${nameWithOwner} is:issue"
-        type: ISSUE
-      ) {
-        issueCount
-      }
-    }`);
-  return mapValues(data, (obj) => obj.issueCount);
+export const score = ({ issue, merged, pullRequest }: ActivityCounts): number =>
+  3 * merged + 2 * pullRequest + issue;
+
+const countActivity = (issuesAndPrs: IssueOrPr[]): ActivityCounts => {
+  const [pullRequest, issue] = partition(issuesAndPrs, {
+    __typename: "PullRequest",
+  });
+  return {
+    pullRequest: pullRequest.length,
+    merged: pullRequest.filter((pr) => pr.merged).length,
+    issue: issue.length,
+  };
 };
 
-const score = ({ issue, merged, pullRequest }: ActivityCounts): number =>
-  merged * 3 + pullRequest * 2 + issue;
-
-// TODO: figure out how to query multiple repositories at a time.
 export const getGithubContributions = async (): Promise<ContributedRepo[]> => {
-  const repos = await getContributedRepos();
-  const activities = await Promise.all(
-    repos.map((repo) => activityInRepo(repo.nameWithOwner))
-  );
-  const merged = repos.map((repo, i) => ({
-    ...repo,
-    activity: activities[i],
-  }));
-  return orderBy(merged, (repo) => score(repo.activity), "desc");
+  let hasNextPage = true;
+  let endCursor = undefined as string | undefined;
+  const issuesAndPrs: IssueOrPr[] = [];
+  while (hasNextPage) {
+    // eslint-disable-next-line no-await-in-loop
+    const { nodes, pageInfo } = await getIssueSearchPage(endCursor);
+    issuesAndPrs.push(...nodes);
+    hasNextPage = pageInfo.hasNextPage;
+    endCursor = pageInfo.endCursor;
+  }
+  const byRepo = groupBy(issuesAndPrs, (obj) => obj.repository.nameWithOwner);
+  const repos = Object.values(byRepo)
+    .map((array) => {
+      const { repository } = array[0];
+      const activity = countActivity(array);
+      return {
+        ...repository,
+        activity,
+        score: score(activity),
+      };
+    })
+    .filter((repo) => repo.activity.pullRequest > 0);
+  return orderBy(repos, "score", "desc");
 };
