@@ -3,12 +3,7 @@ import { HierarchyCircularNode, HierarchyNode, PackCircle } from "d3";
 import { useMemo } from "react";
 import groupingMap from "./tag-groupings.json";
 import { UserTag } from "../stackoverflow/types";
-import {
-  MAX_CHILDREN_PER_BUBBLE,
-  MINIMUM_GROUP_SCORE,
-  PACK_LAYOUT_PADDING,
-  TAG_COUNT,
-} from "../../config";
+import { MAX_CHILDREN_PER_BUBBLE, MINIMUM_GROUP_SCORE, PACK_LAYOUT_PADDING, TAG_COUNT } from "../../config";
 
 /**
  * Not all properties of the UserTag are actually needed.
@@ -40,6 +35,11 @@ export const toSerializable = (
   return { data, x, y, r, value, children: children?.map(toSerializable) };
 };
 
+/**
+ * Sort & size based on the sum of answers and upvotes
+ */
+const score = (tag: TagData): number => tag.answer_score + tag.answer_count;
+
 export const prepareTags = (tags: TagData[]): HierarchyNode<TagData> => {
   /**
    * Assign the group name to each tag.
@@ -52,7 +52,7 @@ export const prepareTags = (tags: TagData[]): HierarchyNode<TagData> => {
       ...obj,
       group: (groupingMap as Record<string, string>)[obj.tag_name] ?? "",
     }))
-    .sort((a, b) => b.answer_score - a.answer_score)
+    .sort((a, b) => score(b) - score(a))
     .filter((o) => o.group !== "")
     .slice(0, TAG_COUNT);
 
@@ -74,9 +74,7 @@ export const prepareTags = (tags: TagData[]): HierarchyNode<TagData> => {
    * Note: have to use a type assertion because D3 expects the root node
    * to be assignable to TagData, but it just has children.
    */
-  return d3
-    .hierarchy<TagData>(data as unknown as TagData)
-    .sum((d) => d.answer_score);
+  return d3.hierarchy<TagData>(data as unknown as TagData).sum(score);
 };
 
 /**

@@ -9,7 +9,7 @@ export const PACK_LAYOUT_PADDING = 0.5;
 /**
  * The number of tags to show in the tag cloud. Can adjust this amount.
  */
-export const TAG_COUNT = 150;
+export const TAG_COUNT = 400;
 /**
  * The minimum font size for tag bubble texts,
  * after accounting for zoom scale.
@@ -19,7 +19,7 @@ export const BUBBLE_MINIMUM_FONT_SIZE = 10;
 /**
  * Do not include parent bubbles if their score is less than this amount.
  */
-export const MINIMUM_GROUP_SCORE = 5;
+export const MINIMUM_GROUP_SCORE = 10;
 /**
  * Limit the number of children in a parent group to prevent unnecessary
  * tiny bubbles where better large bubbles exist.
@@ -38,3 +38,11 @@ export const CHARACTER_WIDTH_RATIO = 0.43;
  * Title to be appended to SEO title tags
  */
 export const SITE_TITLE = "Linda Paiste";
+/**
+ * Login name for GitHub API calls and links
+ */
+export const GITHUB_USERNAME = "lindapaiste";
+/**
+ * Github API token via env vars
+ */
+export const GITHUB_TOKEN = process.env.GITHUB_TOKEN;

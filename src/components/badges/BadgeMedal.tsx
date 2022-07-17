@@ -1,5 +1,11 @@
 import { IconType } from "react-icons";
-import { SiJavascript, SiReact, SiRedux, SiTypescript } from "react-icons/si";
+import {
+  SiJavascript,
+  SiReact,
+  SiReactrouter,
+  SiRedux,
+  SiTypescript,
+} from "react-icons/si";
 import { IoTrophySharp } from "react-icons/io5";
 import clsx from "clsx";
 import { rankColors } from "./rankColors";
@@ -28,9 +34,11 @@ const getIconComponent = (tag: string): IconType | undefined => {
   // `includes` covers cases which lack a specific icon
   // applies to "redux", "react-redux", and "redux-toolkit" which all use the same logo
   if (tag.includes("redux")) return SiRedux;
+  // applies to "react-router"
+  if (tag.includes("router")) return SiReactrouter;
   // applies to "typescript", "typescript-generics", etc.
   if (tag.includes("typescript")) return SiTypescript;
-  // applies to "react-native", etc.
+  // applies to "react", "react-native", etc.
   if (tag.includes("react")) return SiReact;
   return undefined;
 };

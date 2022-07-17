@@ -1,5 +1,5 @@
 import axios from "axios";
-import { range } from "lodash";
+import { range, sortBy, uniqBy } from "lodash";
 import { SoResponse, TopTagsJson, UserTag } from "./types";
 import { USER_ID } from "../../config";
 import { Badge, UserBadge } from "./types-badges";
@@ -109,7 +109,7 @@ export const getMyTagBadges = async (): Promise<SoResponse<UserBadge>> =>
  * Can request multiple badge ids at one time.
  * API accepts up to 100 semicolon delimited ids.
  */
-export const getBadgeData = async (
+export const getBadgeDetails = async (
   ...ids: number[]
 ): Promise<SoResponse<Badge>> => getData(`badges/${ids.join(";")}`);
 
@@ -127,9 +127,12 @@ export const getBadgeRecipients = async (
 /**
  * Combines two separate requests.
  * Gets badges that I've earned along with the count of users who have earned it.
+ * Sorts by rarity and de-duplicates multiple levels (bronze + silver) of the same tag.
  */
-export const getMyBadgesWithCount = async (): Promise<SoResponse<Badge>> => {
+export const getMyBadgesWithCount = async (): Promise<Badge[]> => {
   const badges = await getMyTagBadges();
   const ids = badges.items.map((o) => o.badge_id);
-  return getBadgeData(...ids);
+  const details = await getBadgeDetails(...ids);
+  const sorted = sortBy(details.items, (b) => b.award_count);
+  return uniqBy(sorted, (b) => b.name);
 };

@@ -8,7 +8,7 @@ import { percent } from "../../services/units";
  * Create the interpolator to map from values 0-2.
  * Where 0-1 are the parents and 2 is the smallest child.
  */
-const colorInterpolator = d3
+export const colorInterpolator = d3
   .scaleSequential<string, number>()
   .domain([0, 1.3, 2])
   .range(["#0fffaa", "#b797ff", "#fa97ff"]);
