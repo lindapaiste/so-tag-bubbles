@@ -1,7 +1,10 @@
 import { GetStaticProps } from "next";
 import { BubblesScreen } from "../components/bubbles/BubblesScreen";
 import SEO from "../services/head";
-import { getMyBadgesWithCount, getMyTopTags } from "../services/stackoverflow/client";
+import {
+  getMyBadgesWithCount,
+  getMyTopTags,
+} from "../services/stackoverflow/client";
 import { TagData } from "../services/d3/usePackLayout";
 import { TAG_COUNT } from "../config";
 import { getGithubContributions } from "../services/github/client";

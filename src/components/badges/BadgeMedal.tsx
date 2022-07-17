@@ -60,7 +60,7 @@ export const BadgeMedal = ({
     <div
       className={clsx(
         "box-content border-solid border-2",
-        "w-16 h-16 rounded-full",
+        "w-16 h-16 rounded-full shadow-md",
         "relative"
       )}
       style={{ borderColor: darker, background: lighter, overflow: "hidden" }}
