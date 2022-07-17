@@ -3,7 +3,12 @@ import { HierarchyCircularNode, HierarchyNode, PackCircle } from "d3";
 import { useMemo } from "react";
 import groupingMap from "./tag-groupings.json";
 import { UserTag } from "../stackoverflow/types";
-import { MAX_CHILDREN_PER_BUBBLE, MINIMUM_GROUP_SCORE, PACK_LAYOUT_PADDING, TAG_COUNT } from "../../config";
+import {
+  MAX_CHILDREN_PER_BUBBLE,
+  MINIMUM_GROUP_SCORE,
+  PACK_LAYOUT_PADDING,
+  TAG_COUNT,
+} from "../../config";
 
 /**
  * Not all properties of the UserTag are actually needed.
