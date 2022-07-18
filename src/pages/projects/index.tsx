@@ -1,4 +1,4 @@
-import { ProjectsList } from "../../components/projects/ProjectStub";
+import { ProjectsList } from "../../components/projects/ProjectsList";
 import SEO from "../../services/head";
 
 export default function Page(): JSX.Element {

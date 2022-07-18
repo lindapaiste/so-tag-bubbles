@@ -1,5 +1,7 @@
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { TbChevronRight } from "react-icons/tb";
+import { TechKey, TechList } from "./Tech";
 
 /**
  * Just want to get these links up somewhere!
@@ -9,41 +11,38 @@ import { FC } from "react";
 interface ProjectProps {
   url: string;
   title: string;
+  tech?: TechKey[];
 }
 
-export const ProjectStub: FC<ProjectProps> = ({ url, title }) => (
-  <li className="w-full my-4">
-    <a
-      href={url}
-      className={clsx(
-        "w-full block p-8 bg-white",
-        "rounded-lg border-2 border-[#50d7cb] shadow-md",
-        "hover:underline hover:bg-[#9bcdc80f]"
-      )}
-    >
-      {title}
-    </a>
-  </li>
-);
-
-export const ProjectsList: FC = () => (
-  <div
-    className={clsx(
-      "flex justify-center text-center",
-      "font-benchnine font-bold text-3xl tracking-wide uppercase"
-    )}
-  >
-    <ul className="flex flex-col items-stretch">
-      <ProjectStub
-        url="https://patterns.lindapaiste.com"
-        title="Geometric Pattern Creator"
-      />
-      <ProjectStub
-        url="https://pets.lindapaiste.com"
-        title="Adoptable Pet Search"
-      />
-      <ProjectStub url="https://snake.lindapaiste.com" title="Snake Game" />
-      <ProjectStub url="https://color.lindapaiste.com" title="Color Analysis" />
-    </ul>
-  </div>
-);
+export const ProjectStub: FC<ProjectProps> = ({ url, title, tech = [] }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <li className="w-full my-4">
+      <a
+        href={url}
+        className={clsx(
+          "w-full block p-8 bg-white",
+          "rounded-lg border-2 border-[#50d7cb] shadow-md",
+          "hover:underline hover:bg-[#9bcdc80f]"
+        )}
+      >
+        {title}
+      </a>
+      <div
+        role="button"
+        tabIndex={0}
+        className="cursor-pointer text-right hover:underline"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <span className="text-base font-lora lowercase italic">Packages</span>
+        <TbChevronRight
+          className={clsx(
+            "transition-transform transform inline text-xl",
+            isOpen ? "rotate-90" : "rotate-0"
+          )}
+        />
+      </div>
+      <TechList tech={tech} isOpen={isOpen} />
+    </li>
+  );
+};

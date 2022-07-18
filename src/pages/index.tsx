@@ -13,7 +13,7 @@ import { GithubGrid } from "../components/github/GithubGrid";
 import { Badge } from "../services/stackoverflow/types-badges";
 import { BadgesGrid } from "../components/badges/BadgesGrid";
 import { Section } from "../components/layout/Section";
-import { ProjectsList } from "../components/projects/ProjectStub";
+import { ProjectsList } from "../components/projects/ProjectsList";
 
 interface Props {
   initialData: {
