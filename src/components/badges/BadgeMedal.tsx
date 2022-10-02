@@ -1,11 +1,5 @@
 import { IconType } from "react-icons";
-import {
-  SiJavascript,
-  SiReact,
-  SiReactrouter,
-  SiRedux,
-  SiTypescript,
-} from "react-icons/si";
+import { SiJavascript, SiReact, SiReactrouter, SiRedux, SiTypescript } from "react-icons/si";
 import { IoTrophySharp } from "react-icons/io5";
 import clsx from "clsx";
 import { rankColors } from "./rankColors";

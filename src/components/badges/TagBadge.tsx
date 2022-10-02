@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { rankColors } from "./rankColors";
 import { BadgeMedal, BadgeMedalProps } from "./BadgeMedal";
 
 export interface TagBadgeProps extends BadgeMedalProps {
@@ -20,22 +19,25 @@ export const TagBadgeBox = ({
   tag_name,
   award_count,
 }: TagBadgeProps): JSX.Element => {
-  const { lighter, darker } = rankColors[rank];
   return (
     <div
       className={clsx(
         "font-lora",
         "flex flex-row justify-between items-center",
-        "border-solid border rounded-md p-3 shadow-md"
+        "rounded-lg border-2 border-[#50d7cb] shadow-md p-3"
       )}
-      style={{ borderColor: darker, background: lighter }}
     >
       <div className="flex-1 flex flex-col text-center items-stretch">
-        <span className="text-xs">
+        <span className="italic text-xs">
           1 of <span className="italic font-bold text-base">{award_count}</span>{" "}
           users with badge
         </span>
-        <span className="italic text-2xl">{tag_name}</span>
+        <span className={clsx(
+          "font-bold font-benchnine uppercase",
+          tag_name.length > 15 ? "text-2xl" : "text-3xl"
+        )}>
+          {tag_name}
+        </span>
       </div>
       <BadgeMedal rank={rank} tag_name={tag_name} />
     </div>
