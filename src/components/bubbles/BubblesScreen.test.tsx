@@ -11,14 +11,12 @@ import { BubblesScreen } from "./BubblesScreen";
 
 describe("BubblesScreen", () => {
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<BubblesScreen tags={json.items}/>)
-      .toJSON();
+    const tree = renderer.create(<BubblesScreen tags={json.items} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("can select and deselect parent groups", () => {
-    render(<BubblesScreen tags={json.items}/>);
+    render(<BubblesScreen tags={json.items} />);
     // choosing these names because they are parents only
     // need a good way to distinguish
     const backend = screen.getByRole("treeitem", {
