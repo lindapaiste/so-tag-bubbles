@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { ReactNode } from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { renderHook } from "@testing-library/react-hooks";
 import { useClampFontSize, ZoomContext } from "./ZoomContext";
@@ -15,7 +15,7 @@ describe("useClampFontSize", () => {
   });
 
   it("does not modify texts which are already large enough", () => {
-    const wrapper: FC = ({ children }) => (
+    const wrapper = ({ children }: { children: ReactNode }) => (
       <ZoomContext.Provider value={2}>{children}</ZoomContext.Provider>
     );
     const { result } = renderHook(() => useClampFontSize(100), { wrapper });
@@ -24,7 +24,7 @@ describe("useClampFontSize", () => {
 
   it("limits size depending on the current scale", () => {
     const scale = 5;
-    const wrapper: FC = ({ children }) => (
+    const wrapper = ({ children }: { children: ReactNode }) => (
       <ZoomContext.Provider value={scale}>{children}</ZoomContext.Provider>
     );
     const { result } = renderHook(() => useClampFontSize(1), { wrapper });

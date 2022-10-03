@@ -16,11 +16,11 @@ export const Section: FC<SectionProps> = ({
   subtitle,
   children,
 }: SectionProps) => (
-  <div className="flex flex-col items-center my-16">
+  <div className="my-16 flex flex-col items-center">
     <Divider />
-    <div className="text-center m-8 mt-16">
+    <div className="m-8 mt-16 text-center">
       <h3 className="font-lora text-3xl">{title}</h3>
-      {subtitle && <h4 className="font-lora italic text-lg">{subtitle}</h4>}
+      {subtitle && <h4 className="font-lora text-lg italic">{subtitle}</h4>}
     </div>
     {children}
   </div>

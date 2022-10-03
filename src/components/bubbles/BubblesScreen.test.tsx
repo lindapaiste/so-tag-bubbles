@@ -9,19 +9,14 @@ import { BubblesScreen } from "./BubblesScreen";
  * @jest-environment jsdom
  */
 
-const WIDTH = 1000;
-const HEIGHT = 1000;
-
 describe("BubblesScreen", () => {
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<BubblesScreen tags={json.items} width={WIDTH} height={HEIGHT} />)
-      .toJSON();
+    const tree = renderer.create(<BubblesScreen tags={json.items} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("can select and deselect parent groups", () => {
-    render(<BubblesScreen tags={json.items} width={WIDTH} height={HEIGHT} />);
+    render(<BubblesScreen tags={json.items} />);
     // choosing these names because they are parents only
     // need a good way to distinguish
     const backend = screen.getByRole("treeitem", {

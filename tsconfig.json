@@ -1,14 +1,8 @@
 {
-  "include": [
-    "./src/**/*"
-  ],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [
-      "dom",
-      "es2019"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "resolveJsonModule": true,
     "moduleResolution": "node",
@@ -20,14 +14,9 @@
     "module": "esnext",
     "isolatedModules": true,
     "noEmit": true,
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ],
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

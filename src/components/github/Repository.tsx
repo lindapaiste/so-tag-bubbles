@@ -18,12 +18,12 @@ export const Repository: FC<ContributedRepo> = ({
 }) => (
   <div
     className={clsx(
-      "w-full p-4 shadow-sm bg-white rounded-lg shadow-md",
+      "w-full rounded-lg bg-white p-4 shadow-sm shadow-md",
       "border border-solid border-gray-300"
     )}
     key={nameWithOwner}
   >
-    <div className="flex items-center justify-start pl-2 pt-2 mb-4">
+    <div className="mb-4 flex items-center justify-start pl-2 pt-2">
       <div
         className={clsx(
           "rounded-full bg-white p-[3px] shadow-md",
@@ -33,7 +33,7 @@ export const Repository: FC<ContributedRepo> = ({
         <img
           src={owner.avatarUrl}
           alt={nameWithOwner}
-          className="w-14 h-14 rounded-full border-gray-300 bg-white"
+          className="h-14 w-14 rounded-full border-gray-300 bg-white"
         />
       </div>
       <div className="ml-4">
@@ -46,7 +46,7 @@ export const Repository: FC<ContributedRepo> = ({
         >
           {name}
         </div>
-        <div className="font-lora text-md italic">{owner.login}</div>
+        <div className="text-md font-lora italic">{owner.login}</div>
       </div>
     </div>
     <Activities url={url} counts={activity} />

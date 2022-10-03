@@ -48,7 +48,7 @@ export const ChildBubble: FC<ChildBubbleProps> = ({
       node={node}
       className={clsx(
         styles.childBubble,
-        isSelected ? "transform scale-1" : "transform scale-0",
+        isSelected ? "scale-1 opacity-100" : "scale-0 opacity-0",
         isSelected && "duration-700",
         "cursor-default"
       )}
@@ -70,7 +70,7 @@ export const ChildBubble: FC<ChildBubbleProps> = ({
         node={node}
         isActive={isActive}
         className={clsx(
-          isSelected ? "transform scale-1" : "transform scale-0",
+          isSelected ? "scale-1" : "scale-0",
           isSelected && "delay-200"
         )}
       />

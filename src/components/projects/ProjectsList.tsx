@@ -6,7 +6,7 @@ export const ProjectsList: FC = () => (
   <div
     className={clsx(
       "flex justify-center text-center",
-      "font-benchnine font-bold text-3xl tracking-wide uppercase"
+      "font-benchnine text-3xl font-bold uppercase tracking-wide"
     )}
   >
     <ul className="flex flex-col items-stretch">

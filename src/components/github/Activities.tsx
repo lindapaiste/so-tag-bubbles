@@ -18,8 +18,8 @@ interface ActivityProps {
 const Activity: FC<ActivityProps> = ({ icon, url, count, label }) => (
   <a
     className={clsx(
-      "flex-1 flex items-center justify-evenly",
-      "m-1 rounded-md p-2 bg-gray-100 shadow-sm",
+      "flex flex-1 items-center justify-evenly",
+      "m-1 rounded-md bg-gray-100 p-2 shadow-sm",
       count || "text-gray-400"
     )}
     href={url}

@@ -40,7 +40,7 @@ export const Title = ({
     const y = words.length;
     const textR = Math.sqrt(x * x + y * y);
     return (2 * radius) / textR;
-  }, [node]);
+  }, [words, radius]);
 
   const [titleSize, setTitleSize] = useState(titleBase);
   const [detailSize, setDetailSize] = useState(detailBase);
@@ -53,7 +53,7 @@ export const Title = ({
     const minVminSize = (100 * BUBBLE_MINIMUM_FONT_SIZE) / (min * scale);
     setTitleSize(Math.max(titleBase, minVminSize));
     setDetailSize(Math.max(detailBase, minVminSize));
-  }, [scale]);
+  }, [scale, titleBase, detailBase]);
 
   return (
     <div
@@ -61,16 +61,21 @@ export const Title = ({
       className={clsx(
         "h-full",
         "flex flex-col items-center justify-center",
-        "transition-all duration-500",
         "text-center leading-none",
+        "transition-all duration-500",
         className
       )}
-      style={{
-        fontSize: vmin(titleSize),
-      }}
     >
       {words.map((word) => (
-        <span key={word}>{word}</span>
+        <span
+          key={word}
+          style={{
+            // Don't want to transition from initial to final size.
+            fontSize: vmin(titleSize),
+          }}
+        >
+          {word}
+        </span>
       ))}
       {isLeaf && (
         <div
@@ -80,8 +85,8 @@ export const Title = ({
           className={clsx(
             "transition-all duration-500",
             isActive
-              ? "transform scale-y-100 max-h-40"
-              : "transform scale-y-0 max-h-0"
+              ? "max-h-40 scale-y-100 opacity-100"
+              : "max-h-0 scale-y-0 opacity-0"
           )}
           style={{
             fontSize: vmin(detailSize),

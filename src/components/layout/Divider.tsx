@@ -12,7 +12,7 @@ const Circle: FC<{ value: number }> = ({ value }) => {
   const size = sizeInterpolator(value);
   return (
     <div
-      className="rounded-full m-2"
+      className="m-2 rounded-full"
       style={{
         background: colorInterpolator(2 - value),
         width: size,
@@ -26,7 +26,7 @@ export const Divider: FC = () => {
   const leading = d3.range(0, 2, 0.3);
   const trailing = leading.slice(0, -1).reverse();
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       {leading.map((value) => (
         <Circle value={value} key={`leading-${value}`} />
       ))}

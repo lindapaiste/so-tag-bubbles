@@ -17,7 +17,8 @@
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "airbnb-typescript",
-    "prettier"
+    "prettier",
+    "next/core-web-vitals"
   ],
   "rules": {
     "import/no-unresolved": "off",
@@ -32,7 +33,9 @@
     "no-undef": "off",
     "no-plusplus": "off",
     "prettier/prettier": "warn",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.stories.tsx", "**/*.test.ts", "**/*.test.tsx", "**/__tests__/*"]}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.stories.tsx", "**/*.test.ts", "**/*.test.tsx", "**/__tests__/*"]}],
+    "import/no-anonymous-default-export": "off",
+    "jsx-a11y/click-events-have-key-events": "warn"
   },
   "settings": {
     "react": {

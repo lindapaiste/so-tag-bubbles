@@ -17,13 +17,13 @@ interface ProjectProps {
 export const ProjectStub: FC<ProjectProps> = ({ url, title, tech = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <li className="w-full my-4">
+    <li className="my-4 w-full">
       <a
         href={url}
         className={clsx(
-          "w-full block p-8 bg-white",
+          "block w-full bg-white p-8",
           "rounded-lg border-2 border-[#50d7cb] shadow-md",
-          "hover:underline hover:bg-[#9bcdc80f]"
+          "hover:bg-[#9bcdc80f] hover:underline"
         )}
       >
         {title}
@@ -34,10 +34,10 @@ export const ProjectStub: FC<ProjectProps> = ({ url, title, tech = [] }) => {
         className="cursor-pointer text-right hover:underline"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className="text-base font-lora lowercase italic">Packages</span>
+        <span className="font-lora text-base lowercase italic">Packages</span>
         <TbChevronRight
           className={clsx(
-            "transition-transform transform inline text-xl",
+            "inline text-xl transition-transform",
             isOpen ? "rotate-90" : "rotate-0"
           )}
         />
