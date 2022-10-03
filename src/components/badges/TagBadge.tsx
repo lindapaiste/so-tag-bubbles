@@ -23,19 +23,21 @@ export const TagBadgeBox = ({
     <div
       className={clsx(
         "font-lora",
-        "flex flex-row justify-between items-center",
-        "rounded-lg border-2 border-[#50d7cb] shadow-md p-3"
+        "flex flex-row items-center justify-between",
+        "rounded-lg border-2 border-[#50d7cb] p-3 shadow-md"
       )}
     >
-      <div className="flex-1 flex flex-col text-center items-stretch">
-        <span className="italic text-xs">
-          1 of <span className="italic font-bold text-base">{award_count}</span>{" "}
+      <div className="flex flex-1 flex-col items-stretch text-center">
+        <span className="text-xs italic">
+          1 of <span className="text-base font-bold italic">{award_count}</span>{" "}
           users with badge
         </span>
-        <span className={clsx(
-          "font-bold font-benchnine uppercase",
-          tag_name.length > 15 ? "text-2xl" : "text-3xl"
-        )}>
+        <span
+          className={clsx(
+            "font-benchnine font-bold uppercase",
+            tag_name.length > 15 ? "text-2xl" : "text-3xl"
+          )}
+        >
           {tag_name}
         </span>
       </div>

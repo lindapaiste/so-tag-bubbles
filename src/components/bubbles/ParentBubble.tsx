@@ -68,11 +68,11 @@ export const ParentBubble = ({
             isSelected && "opacity-30 transition-opacity duration-700",
             // hover effect before selection
             // Note: Tailwind bg-opacity only works if using tailwind colors
-            isHovered && !isSelected && "transform scale-95 opacity-80",
+            isHovered && !isSelected && "scale-95 opacity-80",
             // cursor style
             isSelected ? "cursor-zoom-out" : "cursor-zoom-in",
             // load in effect
-            loaded ? "transform scale-1" : "transform scale-0"
+            loaded ? "scale-1" : "scale-0"
           )}
           node={node}
           colorValue={colorBasis}
@@ -100,7 +100,7 @@ export const ParentBubble = ({
             isActive={false}
             className={clsx(
               // hide parent title when children are visible
-              isSelected && "opacity-0 transform scale-0"
+              isSelected && "scale-0 opacity-0"
             )}
           />
         </Bubble>

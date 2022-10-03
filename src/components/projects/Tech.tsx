@@ -81,8 +81,8 @@ export interface TechProps {
 }
 
 const TechTag: FC<TechProps> = ({ icon, label }) => (
-  <div className="flex items-center m-1 rounded-md p-2 bg-gray-100 shadow-sm">
-    <div className="w-1/3 flex justify-center">{icon}</div>
+  <div className="m-1 flex items-center rounded-md bg-gray-100 p-2 shadow-sm">
+    <div className="flex w-1/3 justify-center">{icon}</div>
     <span className="whitespace-nowrap">{label}</span>
   </div>
 );
@@ -104,7 +104,7 @@ export const TechList: FC<TechListProps> = ({ tech, isOpen }) => {
       <div
         className={clsx(
           isOpen ? "scale-y-100" : "scale-y-0",
-          "transform origin-top transition-transform duration-500"
+          "origin-top transition-transform duration-500"
         )}
         style={{ transformOrigin: "top" }}
       >

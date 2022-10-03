@@ -82,9 +82,9 @@ export const BubblesScreen = ({ tags }: BubblesScreenProps): JSX.Element => {
       >
         <div
           className={clsx(
-            "w-screen h-screen overflow-hidden",
+            "h-screen w-screen overflow-hidden",
             "relative flex",
-            "font-bold font-benchnine uppercase",
+            "font-benchnine font-bold uppercase",
             selected === null ? "cursor-default" : "cursor-zoom-out",
             "select-none"
           )}
@@ -100,7 +100,7 @@ export const BubblesScreen = ({ tags }: BubblesScreenProps): JSX.Element => {
           >
             <h1
               className={clsx(
-                "font-normal margin-0",
+                "margin-0 font-normal",
                 "transition-all duration-500",
                 "flex flex-col"
               )}
@@ -118,7 +118,7 @@ export const BubblesScreen = ({ tags }: BubblesScreenProps): JSX.Element => {
             className="absolute bottom-0 right-0 px-12 py-6 transition-all duration-500"
             id={styles.bottomRight}
           >
-            <h2 className="font-normal margin-0 transition-all duration-500">
+            <h2 className="margin-0 font-normal transition-all duration-500">
               Top{" "}
               <a
                 className={clsx(

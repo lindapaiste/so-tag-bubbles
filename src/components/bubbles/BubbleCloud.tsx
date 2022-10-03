@@ -54,7 +54,7 @@ export const BubbleCloud = ({
         aria-label="Top Tags"
         className={clsx(
           "transition-transform duration-500",
-          "w-screen h-screen m-auto",
+          "m-auto h-screen w-screen",
           "relative"
         )}
         style={{

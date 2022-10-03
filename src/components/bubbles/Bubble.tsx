@@ -58,6 +58,7 @@ export const Bubble: FC<BubbleProps> = ({
       "transition-all duration-500",
       "origin-center",
       "focus:outline-none",
+      "focus-visible:outline-none",
       className
     )}
     style={{

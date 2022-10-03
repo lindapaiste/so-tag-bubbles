@@ -19,10 +19,10 @@ export default function TagBadges({ initialData }: Props): JSX.Element {
         title="Linda Paiste - Front End Web Developer - Houston, TX"
         appendSiteName={false}
       />
-      <div className="font-lora flex flex-col items-center">
+      <div className="flex flex-col items-center font-lora">
         <h3 className="text-3xl">
           {"Among my peers, here's where I "}
-          <span className="font-bold italic text-5xl">excel</span>
+          <span className="text-5xl font-bold italic">excel</span>
         </h3>
         <BadgesGrid badges={initialData} />
       </div>

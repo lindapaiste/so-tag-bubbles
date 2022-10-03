@@ -1,5 +1,11 @@
 import { IconType } from "react-icons";
-import { SiJavascript, SiReact, SiReactrouter, SiRedux, SiTypescript } from "react-icons/si";
+import {
+  SiJavascript,
+  SiReact,
+  SiReactrouter,
+  SiRedux,
+  SiTypescript,
+} from "react-icons/si";
 import { IoTrophySharp } from "react-icons/io5";
 import clsx from "clsx";
 import { rankColors } from "./rankColors";
@@ -53,20 +59,20 @@ export const BadgeMedal = ({
   return (
     <div
       className={clsx(
-        "box-content border-solid border-2",
-        "w-16 h-16 rounded-full shadow-md",
+        "box-content border-2 border-solid",
+        "h-16 w-16 rounded-full shadow-md",
         "relative"
       )}
       style={{ borderColor: darker, background: lighter, overflow: "hidden" }}
     >
       <span
-        className="rounded-full w-full h-full p-2 opacity-50 absolute"
+        className="absolute h-full w-full rounded-full p-2 opacity-50"
         style={{ background: main, border: `4px solid ${darker}` }}
       />
       {Icon === undefined ? (
-        <IoTrophySharp className="w-10 h-10 m-3 absolute" color={main} />
+        <IoTrophySharp className="absolute m-3 h-10 w-10" color={main} />
       ) : (
-        <Icon className="w-10 h-10 m-3 absolute rounded" color={darker} />
+        <Icon className="absolute m-3 h-10 w-10 rounded" color={darker} />
       )}
     </div>
   );

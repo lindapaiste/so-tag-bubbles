@@ -9,7 +9,7 @@ export interface Props {
 
 const ProjectPage = ({ project }: Props): JSX.Element => (
   <div>
-    <h1 className="font-lora italic text-4xl">{project.name}</h1>
+    <h1 className="font-lora text-4xl italic">{project.name}</h1>
     <div>
       {project.links.github ? (
         <GithubButton url={project.links.github} />
@@ -20,17 +20,19 @@ const ProjectPage = ({ project }: Props): JSX.Element => (
 
 export default ProjectPage;
 
-export const getStaticProps: GetStaticProps<Props, { project: string }> =
-  async (context) => {
-    if (!context.params) {
-      throw new Error("missing required project slug");
-    }
-    return {
-      props: {
-        project: await getProject(context.params.project),
-      },
-    };
+export const getStaticProps: GetStaticProps<
+  Props,
+  { project: string }
+> = async (context) => {
+  if (!context.params) {
+    throw new Error("missing required project slug");
+  }
+  return {
+    props: {
+      project: await getProject(context.params.project),
+    },
   };
+};
 
 export const getStaticPaths: GetStaticPaths<{ project: string }> = async () => {
   const slugs = await getProjectSlugs();

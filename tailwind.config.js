@@ -1,9 +1,9 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: [
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
     fontFamily: {
@@ -19,9 +19,6 @@ module.exports = {
       'zoom-in': 'zoom-in',
       'zoom-out': 'zoom-out',
     }
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
