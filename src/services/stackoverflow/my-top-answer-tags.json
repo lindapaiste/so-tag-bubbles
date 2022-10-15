@@ -1,4 +1,5 @@
 {
+  "has_more": true,
   "items": [
     {
       "user_id": 10431574,
@@ -801,7 +802,6 @@
       "tag_name": "react-testing-library"
     }
   ],
-  "has_more": true,
   "quota_max": 10000,
   "quota_remaining": 9994
 }
