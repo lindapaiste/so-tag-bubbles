@@ -64,6 +64,7 @@
     "postcss": "^8.4.17",
     "postcss-loader": "^7.0.1",
     "prettier": "^2.3.0",
+    "prettier-plugin-sort-json": "^0.0.3",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "react-scripts": "^5.0.1",
     "react-test-renderer": "^18.2.0",
